@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Book Page{% endblock %}
+
+{% block content %}
+{% load static %}
+<h1>Book Pages</h1>
+
+<div class="row mb-3">
+    <div class="col-4">
+        <form class="d-flex" method="get">
+            <input class="form-control me-2" type="text" placeholder="Search" name="q" value="{{ search_query }}">
+
+            <button class="btn btn-success">Search</button>
+        </form>
+    </div>
+</div>
+
+
+{% if page_obj %}
+    {% for book in page_obj.object_list %}
+        <div class="row g-0 bg-body-secondary position-relative mb-3">
+            <div class="col-md-2 mb-md-0 p-md-4">
+                <img src="{{ book.cover_picture.url }}" class="cover-pic" alt="books">
+            </div>
+            <div class="col-md-6 p-4 ps-md-0">
+                <h5 class="mt-0">{{ book.title }}</h5>
+                <p>
+                    {{ book.description }}
+                </p>
+                <a class="stretched-link" href="{% url 'books:datail' book.id %}"> {{ book.title }} <i class="bi bi-forward-fill"></i></a>
+            </div>
+        </div>
+    {% endfor %}
+
+    <nav>
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+            {% endif %}
+
+            <li class="page-item active" aria-current="page">
+              <a class="page-link" href="#">{{ page_obj.number }}</a>
+            </li>
+
+            {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last&raquo;</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+{% else %}
+    No book found.
+{% endif %}
+{% endblock %}

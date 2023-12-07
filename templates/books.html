@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Books image{% endblock %}
+
+{% block content %}
+  <h2>
+      Assalomu alaykum
+      {% load static %}
+      <br>
+      <img src="{% static 'image/books.jpg' %}" alt="book" >
+
+  </h2>
+
+    {% for book in books %}
+        {{ book.title }}
+    {% endfor %}
+
+{% endblock %}
