@@ -23,8 +23,8 @@ from .views import home_page, book_list, Hello, index_html_view
 
 urlpatterns = [
     path("book_list/", book_list, name='book_list'),
-    # path("home/", home_page, name='home_pages'),
-    # path("rasm/", BookViews, name="books_kitoblar"),
+    path("home/", home_page, name='home_pages'),
+    path("rasm/", BookViews, name="books_kitoblar"),
     path("index/", index_html_view, name="index"),
     path("", Hello, name='helloworld'),
     path("users/", include("users.urls")),

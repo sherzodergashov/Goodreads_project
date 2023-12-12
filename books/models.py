@@ -4,14 +4,21 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 
+class Type(models.Model):
+    name = models.CharField(max_length=60)
+
+    def __str__(self):
+        return self.name
+
 class Book(models.Model):
     objects = None
     title = models.CharField(max_length=200)
     description = models.TextField()
     isbn = models.CharField(max_length=17)
     cover_picture = models.ImageField(default="default_cover.jpg")
-    # narxi = models.DecimalField(max_length=10, decimal_places=2)
-    # tili = models.
+    # price = models.CharField(max_length=6)
+    # language = models.CharField(max_length=30)
+    # type = models.ForeignKey(Type, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.title)
@@ -36,7 +43,6 @@ class BookAuthor(models.Model):
     def __str__(self):
         return f"{self.book.title} by {self.auther.last_name} {self.auther.first_name}"
 
-
 class BookReview(models.Model):
     objects = None
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
@@ -50,3 +56,10 @@ class BookReview(models.Model):
     def __str__(self):
         return f"{self.stars_given} stars for {self.book.title} by {self.user.username}"
 
+class Order(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Order from {self.user} to {self.book}"
