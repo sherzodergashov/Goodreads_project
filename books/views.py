@@ -8,7 +8,6 @@ from django.views import View
 from books.forms import BookReviewForm
 from books.models import Book, BookReview
 
-
 def BookViews(request):
     return render(request, 'books.html')
 
@@ -30,6 +29,7 @@ class BooksView(View):
         return render(
             request,
             "books/list.html",
+            # "books/shop-list.html",
             {
                 "page_obj": page_obj,
                 "search_query": search_query

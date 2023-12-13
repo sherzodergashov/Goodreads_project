@@ -19,17 +19,22 @@ from django.contrib import admin
 from django.urls import path, include
 
 from books.views import BookViews
-from .views import home_page, book_list, Hello, index_html_view
+from .views import home_page, book_list, Hello, index_html_view, ShopList, ShopGrid, ProductDetails
 
 urlpatterns = [
     path("book_list/", book_list, name='book_list'),
     path("home/", home_page, name='home_pages'),
     path("rasm/", BookViews, name="books_kitoblar"),
-    path("index/", index_html_view, name="index"),
     path("", Hello, name='helloworld'),
     path("users/", include("users.urls")),
     path("books/", include("books.urls")),
     path("API/", include("API.urls")),
+
+
+    path("index/", index_html_view, name="index"),
+    path("shop-list/", ShopList, name='shop-list'),
+    path("shop-grid/", ShopGrid, name='shop-grid'),
+    path("product-details/", ProductDetails, name='product-details'),
 
 
     path('admin/', admin.site.urls),

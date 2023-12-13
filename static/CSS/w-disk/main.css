@@ -22812,7 +22812,7 @@ input[type=number] {
       -ms-flex-align: center;
           align-items: center;
   height: 100%;
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome\ 5 Free";
   font-weight: 900;
   top: 0;
   margin-right: 25px;

@@ -16,9 +16,9 @@ class Book(models.Model):
     description = models.TextField()
     isbn = models.CharField(max_length=17)
     cover_picture = models.ImageField(default="default_cover.jpg")
-    # price = models.CharField(max_length=6)
-    # language = models.CharField(max_length=30)
-    # type = models.ForeignKey(Type, on_delete=models.CASCADE)
+    price = models.DecimalField(max_digits=6, decimal_places=2, default=1000)
+    language = models.CharField(max_length=30, default='english')
+    type = models.ForeignKey(Type, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return str(self.title)

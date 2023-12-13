@@ -42,3 +42,11 @@ def index_html_view(request):
     }
     return render(request, 'index.html', context)
 
+def ProductDetails(request):
+    return render(request, 'product-details.html')
+
+def ShopGrid(request):
+    return render(request, 'shop-grid.html')
+
+def ShopList(request):
+    return render(request, 'shop-list.html')
