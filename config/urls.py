@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from books.views import BookViews
-from .views import home_page, book_list, Hello, index_html_view, ShopList, ShopGrid, ProductDetails
+from .views import home_page, book_list, Hello, ShopList, ShopGrid, ProductDetails, BooksIndex
 
 urlpatterns = [
     path("book_list/", book_list, name='book_list'),
@@ -31,7 +31,8 @@ urlpatterns = [
     path("API/", include("API.urls")),
 
 
-    path("index/", index_html_view, name="index"),
+    # path("index/", index_view, name="index"),
+    path("index/", BooksIndex.as_view(), name="index"),
     path("shop-list/", ShopList, name='shop-list'),
     path("shop-grid/", ShopGrid, name='shop-grid'),
     path("product-details/", ProductDetails, name='product-details'),

@@ -14,10 +14,8 @@
               class="rounded-circle img-fluid" style="width: 150px;">
             <h5 class="my-3">{{user.first_name}} {{user.last_name}}</h5>
             <p class="text-muted mb-1">Full Stack Python Developer</p>
-            <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
             <div class="d-flex justify-content-center mb-2">
               <a class="btn btn-primary" href="{% url 'users:profile_edit' %}">Edit Profile</a>
-              <button type="button" class="btn btn-outline-primary ms-1">Message</button>
             </div>
           </div>
         </div>
@@ -27,7 +25,7 @@
           <div class="card-body">
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Username</p>
+                <p class="mb-0"><i class="bi bi-person-fill mx-1"></i>Username</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">{{user.username}}</p>
@@ -36,7 +34,7 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Email</p>
+                <p class="mb-0"><i class="bi bi-envelope-at-fill mx-1"></i>Email</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">{{user.email}}</p>
@@ -45,7 +43,7 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">First Name</p>
+                <p class="mb-0"><i class="bi bi-person-fill mx-1"></i>First Name</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">{{user.first_name}}</p>
@@ -54,7 +52,7 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Last Name</p>
+                <p class="mb-0"><i class="bi bi-person-fill mx-1"></i>Last Name</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">{{user.last_name}}</p>
@@ -63,7 +61,7 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Phone</p>
+                <p class="mb-0"><i class="bi bi-telephone-fill mx-1"></i>Phone</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">{{user.phone}}</p>
@@ -72,7 +70,16 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Joined</p>
+                <p class="mb-0"><i class="bi bi-house-fill mx-1"></i>Address</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user.address}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0"><i class="bi bi-calendar-date-fill mx-1"></i>Joined</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">{{ user.date_joined | date:'F d, Y' }}</p>

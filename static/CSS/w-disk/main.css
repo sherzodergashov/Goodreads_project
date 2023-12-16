@@ -20501,11 +20501,7 @@ input[type=number] {
   color: #1a1f2b;
 }
 
-.bg-primary {
-  background: #62ab00 !important;
-}
-
-.bg-gray {
+bg-gray {
   background: #f6f6f6;
 }
 

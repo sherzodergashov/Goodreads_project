@@ -1,6 +1,7 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.views import View
+from django.views.generic import ListView
 
 from books.models import BookReview, Book
 from books.views import BooksView
@@ -27,21 +28,36 @@ def index_html_view(request):
     book_size = request.GET.get('page_size', 12)
     paginator = Paginator(books, book_size)
 
-    page_num = request.GET.get('page', 1)
-    page_object = paginator.get_page(page_num)
+# def index_view(request):
+#     books = Book.objects.all().order_by('id')
+#     search_query = request.GET.get("q", "")
+#     if search_query:
+#         books = books.filter(title__icontains=search_query)
+#
+#     page_size = request.GET.get("page_size", 7)
+#     paginator = Paginator(books, page_size)
+#
+#     page_num = request.GET.get('page', 1)
+#     page_obj = paginator.get_page(page_num)
+#
+#     return render(
+#         request,
+#         "index.html",
+#         {
+#             "page_obj": page_obj,
+#             "search_query": search_query
+#          }
+#     )
 
-    books = Book.objects.all().order_by('-id')
-    book_size1 = request.GET.get('page_size', 12)
-    paginator1 = Paginator(books, book_size1)
+class BooksIndex(ListView):
+    model = Book
+    context_object_name = 'books_list'
+    template_name = 'index.html'
 
-    page_num1 = request.GET.get('page', 1)
-    page_object1 = paginator1.get_page(page_num1)
-    context = {
-        'book_list': page_object,
-        'book_list2': page_object1
-    }
-    return render(request, 'index.html', context)
-
+    def get_queryset(self):
+        most_view = Book.objects.order_by('?')
+        new_arrival = Book.objects.all().order_by('id')
+        return most_view
 def ProductDetails(request):
     return render(request, 'product-details.html')
 
