@@ -4,16 +4,16 @@
 {% block title %}Login Page{% endblock %}
 
 {% block content %}
-    <h3>Login</h3>
+    <h3 style="text-align: center;">Login</h3>
 
-    <div class="row">
+    <div class="row mx-5">
         <div class="col-4">
             <form method="post" action="{% url 'users:login' %}">
                 {% csrf_token %}
                 <p>
                 {{ login_form | crispy }}
                 </p>
-                <button class="btn btn-primary mb-2">Log in</button>
+                <button class="btn btn-outlined mb-2">Log in</button>
                 <span class="ms-3 mb-2">No account ? Then, <a href="{% url 'users:register' %}"> get registered</a></span>
             </form>
         </div>

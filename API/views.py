@@ -11,7 +11,7 @@ class BookReviewAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request, id):
-        book_review = BookReview.objects.get(id=id)
+        book_review = BookReview.objects.get()
 
         serializer = BookReviewSerializers(book_review)
         return Response(data=serializer.data)

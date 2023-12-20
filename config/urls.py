@@ -19,20 +19,20 @@ from django.contrib import admin
 from django.urls import path, include
 
 from books.views import BookViews
-from .views import home_page, book_list, Hello, ShopList, ShopGrid, ProductDetails, BooksIndex
+from .views import home_page, book_list, Hello, ShopList, ShopGrid, ProductDetails, book_random
 
 urlpatterns = [
     path("book_list/", book_list, name='book_list'),
     path("home/", home_page, name='home_pages'),
     path("rasm/", BookViews, name="books_kitoblar"),
-    path("", Hello, name='helloworld'),
+    path("", book_random, name='helloworld'),
     path("users/", include("users.urls")),
     path("books/", include("books.urls")),
     path("API/", include("API.urls")),
 
 
     # path("index/", index_view, name="index"),
-    path("index/", BooksIndex.as_view(), name="index"),
+    # path("index/", BooksIndex.as_view(), name="index"),
     path("shop-list/", ShopList, name='shop-list'),
     path("shop-grid/", ShopGrid, name='shop-grid'),
     path("product-details/", ProductDetails, name='product-details'),

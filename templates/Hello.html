@@ -3,69 +3,353 @@
 {% block content %}
 
 {% load static %}
-
-<header class="box">
-<!--    <img class="img-fluid" src="{% static 'image/books.jpg' %}" alt="home page books">-->
-    <img src="data:image/png;base64,
-    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">
-</header>
-
-<!--=================================
-Hero Area
-===================================== -->
-<section class="hero-area hero-slider-1">
-    <div class="sb-slick-slider" data-slick-setting='{
-                    "autoplay": true,
-                    "fade": true,
-                    "autoplaySpeed": 3000,
-                    "speed": 3000,
-                    "slidesToShow": 1,
-                    "dots":true
-                    }'>
-        <div class="single-slide bg-shade-whisper  ">
-            <div class="container">
-                <div class="home-content text-center text-sm-left position-relative">
-                    <div class="hero-partial-image image-right">
-                        <img src="{% static 'image/bg-images/home-slider-2-ai.png' %}" alt="">
+    <!--=================================
+    Hero Area
+    ===================================== -->
+    <section class="hero-area hero-slider-1">
+        <div class="sb-slick-slider" data-slick-setting='{
+                        "autoplay": true,
+                        "fade": true,
+                        "autoplaySpeed": 3000,
+                        "speed": 3000,
+                        "slidesToShow": 1,
+                        "dots":true
+                        }'>
+            <div class="single-slide bg-shade-whisper  ">
+                <div class="container">
+                    <div class="home-content text-center text-sm-left position-relative">
+                        <div class="hero-partial-image image-right">
+                            <img src="{% static 'image/bg-images/home-slider-2-ai.png' %}" alt="">
+                        </div>
+                        <div class="row g-0">
+                            <div class="col-xl-6 col-md-6 col-sm-7">
+                                <div class="home-content-inner content-left-side text-start">
+                                    <h1>H.G. Wells<br>
+                                        De Vengeance</h1>
+                                    <h2>Cover Up Front Of Books and Leave Summary</h2>
+                                    <a href="shop-grid.html" class="btn btn-outlined--primary">
+                                        $78.09 - Order Now!
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row g-0">
-                        <div class="col-xl-6 col-md-6 col-sm-7">
-                            <div class="home-content-inner content-left-side text-start">
-                                <h1>H.G. Wells<br>
-                                    De Vengeance</h1>
-                                <h2>Cover Up Front Of Books and Leave Summary</h2>
-                                <a href="shop-grid.html" class="btn btn-outlined--primary">
-                                    $78.09 - Order Now!
-                                </a>
+                </div>
+            </div>
+            <div class="single-slide bg-ghost-white">
+                <div class="container">
+                    <div class="home-content text-center text-sm-left position-relative">
+                        <div class="hero-partial-image image-left">
+                            <img src="{% static 'image/bg-images/home-slider-1-ai.png' %}" alt="">
+                        </div>
+                        <div class="row align-items-center justify-content-start justify-content-md-end">
+                            <div class="col-lg-6 col-xl-7 col-md-6 col-sm-7">
+                                <div class="home-content-inner content-right-side text-start">
+                                    <h1>J.D. Kurtness <br>
+                                        De Vengeance</h1>
+                                    <h2>Cover Up Front Of Books and Leave Summary</h2>
+                                    <a href="shop-grid.html" class="btn btn-outlined--primary">
+                                        $78.09 - Learn More
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="single-slide bg-ghost-white">
-            <div class="container">
-                <div class="home-content text-center text-sm-left position-relative">
-                    <div class="hero-partial-image image-left">
-                        <img src="{% static 'image/bg-images/home-slider-1-ai.png' %}" alt="">
+    </section>
+    <!--=================================
+    Home Features Section
+    ===================================== -->
+    <section class="mb--30">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-md-6 mt--30">
+                    <div class="feature-box h-100">
+                        <div class="icon">
+                            <i class="bi bi-cart-check-fill"></i>
+                        </div>
+                        <div class="text">
+                            <h5>Free Shipping Item</h5>
+                            <p> Orders over $500</p>
+                        </div>
                     </div>
-                    <div class="row align-items-center justify-content-start justify-content-md-end">
-                        <div class="col-lg-6 col-xl-7 col-md-6 col-sm-7">
-                            <div class="home-content-inner content-right-side text-start">
-                                <h1>J.D. Kurtness <br>
-                                    De Vengeance</h1>
-                                <h2>Cover Up Front Of Books and Leave Summary</h2>
-                                <a href="shop-grid.html" class="btn btn-outlined--primary">
-                                    $78.09 - Learn More
+                </div>
+                <div class="col-xl-3 col-md-6 mt--30">
+                    <div class="feature-box h-100">
+                        <div class="icon">
+                            <i class="fas fa-redo-alt"></i>
+                        </div>
+                        <div class="text">
+                            <h5>Money Back Guarantee</h5>
+                            <p>100% money back</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 mt--30">
+                    <div class="feature-box h-100">
+                        <div class="icon">
+                            <i class="bi bi-cash-coin"></i>
+                        </div>
+                        <div class="text">
+                            <h5>Cash On Delivery</h5>
+                            <p>Lorem ipsum dolor amet</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 mt--30">
+                    <div class="feature-box h-100">
+                        <div class="icon">
+                            <i class="fas fa-life-ring"></i>
+                        </div>
+                        <div class="text">
+                            <h5>Help & Support</h5>
+                            <p>Call us: +99893 320-45-01</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+    Promotion Section One
+    ===================================== -->
+    <section class="section-margin">
+        <h2 class="sr-only">Promotion Section</h2>
+        <div class="container">
+            <div class="row space-db--30">
+                <div class="col-lg-6 col-md-6 mb--30">
+                    <a href="" class="promo-image promo-overlay">
+                        <img src="{% static 'image/bg-images/promo-banner-with-text.jpg' %}" alt="">
+                    </a>
+                </div>
+                <div class="col-lg-6 col-md-6 mb--30">
+                    <a href="" class="promo-image promo-overlay">
+                        <img src="{% static 'image/bg-images/promo-banner-with-text-2.jpg' %}" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+    Home Slider Tab
+    ===================================== -->
+    <section class="section-padding">
+        <h2 class="sr-only">Home Tab Slider Section</h2>
+        <div class="container">
+            <div class="sb-custom-tab">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="shop-tab" data-bs-toggle="tab" href="#shop" role="tab"
+                            aria-controls="shop" aria-selected="true">
+                            Featured Products
+                        </a>
+                        <span class="arrow-icon"></span>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane show active" id="shop" role="tabpanel" aria-labelledby="shop-tab">
+                        <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider"
+                            data-slick-setting='{
+                        "autoplay": true,
+                        "autoplaySpeed": 8000,
+                        "slidesToShow": 5,
+                        "rows":2,
+                        "dots":true
+                    }' data-slick-responsive='[
+                        {"breakpoint":1200, "settings": {"slidesToShow": 3} },
+                        {"breakpoint":768, "settings": {"slidesToShow": 2} },
+                        {"breakpoint":480, "settings": {"slidesToShow": 1} },
+                        {"breakpoint":320, "settings": {"slidesToShow": 1} }
+                    ]'>
+                        {% for book in book_list %}
+                            <div class="single-slide">
+
+                                <div class="product-card">
+                                    <div class="product-header">
+                                        <h3><a href="{% url 'books:datail' book.id %}"> {{ book.title }} </a></h3>
+                                    </div>
+                                    <div class="product-card--body">
+                                        <div class="card-image">
+                                            <img src="{{ book.cover_picture.url }}" alt="">
+                                            <div class="hover-contents">
+                                                <a href="{% url 'books:datail' book.id %}" class="hover-image">
+                                                    <img src="{{ book.cover_picture.url }}" alt="">
+                                                </a>
+                                                <div class="hover-btns">
+                                                    <a href="cart.html" class="single-btn">
+                                                        <i class="fas fa-shopping-basket"></i>
+                                                    </a>
+                                                    <a href="wishlist.html" class="single-btn">
+                                                        <i class="fas fa-heart"></i>
+                                                    </a>
+                                                    <a href="compare.html" class="single-btn">
+                                                        <i class="fas fa-random"></i>
+                                                    </a>
+                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quickModal"
+                                                        class="single-btn">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="price-block">
+                                            <span class="price">£51.20</span>
+                                            <del class="price-old">£51.20</del>
+                                            <span class="price-discount">20%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+    Best Seller Product
+    ===================================== -->
+    <section class="section-margin bg-image section-padding-top section-padding"
+        data-bg="image/bg-images/best-seller-bg.jpg">
+        <div class="container">
+            <div class="section-title section-title--bordered mb-0">
+                <h2>BEST SELLER BOOKS</h2>
+            </div>
+            <div class="best-seller-block">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-6">
+                        <div class="author-image">
+                            <img src="https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2014/7/30/1406719196162/b57b6007-afb1-4e3c-8263-b29f6534aee8-1360x2040.jpeg?width=700&quality=85&auto=format&fit=max&s=ac278c37a7564a3950831f264b08e215"
+                                 alt="fafga">
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-6">
+                        <div class="sb-slick-slider product-slider product-list-slider multiple-row slider-border-multiple-row"
+                            data-slick-setting='{
+                                "autoplay": false,
+                                "autoplaySpeed": 8000,
+                                "slidesToShow":2,
+                                "rows":2,
+                                "dots":true
+                            }' data-slick-responsive='[
+                                {"breakpoint":1200, "settings": {"slidesToShow": 1} },
+                                {"breakpoint":992, "settings": {"slidesToShow": 1} },
+                                {"breakpoint":768, "settings": {"slidesToShow": 1} },
+                                {"breakpoint":575, "settings": {"slidesToShow": 1} },
+                                {"breakpoint":490, "settings": {"slidesToShow": 1} }
+                            ]'>
+                            {% for seller in book_list %}
+                            <div class="single-slide">
+                                <div class="product-card card-style-list">
+                                    <div class="card-image">
+                                        <img src="{{seller.cover_picture.url}}" alt="">
+                                    </div>
+                                    <div class="product-card--body">
+                                        <div class="product-header">
+                                            <a href="#" class="author">
+                                                Rpple
+                                            </a>
+                                            <h3><a href="product-details.html">{{selle}}</a></h3>
+                                        </div>
+                                        <div class="price-block">
+                                            <span class="price">£51.20</span>
+                                            <del class="price-old">£51.20</del>
+                                            <span class="price-discount">20%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+    CHILDREN’S BOOKS
+    ===================================== -->
+    <section class="section-margin">
+        <div class="container">
+            <div class="section-title section-title--bordered">
+                <h2>CHILDREN’S BOOKS</h2>
+            </div>
+            <div class="product-list-slider slider-two-column product-slider multiple-row sb-slick-slider slider-border-multiple-row"
+                data-slick-setting='{
+                                        "autoplay": true,
+                                        "autoplaySpeed": 8000,
+                                        "slidesToShow":3,
+                                        "rows":2,
+                                        "dots":true
+                                    }' data-slick-responsive='[
+                                        {"breakpoint":1200, "settings": {"slidesToShow": 2} },
+                                        {"breakpoint":992, "settings": {"slidesToShow": 2} },
+                                        {"breakpoint":768, "settings": {"slidesToShow": 1} },
+                                        {"breakpoint":575, "settings": {"slidesToShow": 1} },
+                                        {"breakpoint":490, "settings": {"slidesToShow": 1} }
+                                    ]'>
+                {% for seller in book_list %}
+                <div class="single-slide">
+                    <div class="product-card card-style-list">
+                        <div class="card-image">
+                            <img src="{{seller.cover_picture.url}}" alt="">
+                        </div>
+                        <div class="product-card--body">
+                            <div class="product-header">
+                                <a href="#" class="author">
+                                    Rpple
                                 </a>
+                                <h3><a href="product-details.html">{{seller.title}}</a></h3>
+                            </div>
+                            <div class="price-block">
+                                <span class="price">£51.20</span>
+                                <del class="price-old">£51.20</del>
+                                <span class="price-discount">20%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!--=================================
+    Promotion Section Two
+    ===================================== -->
+    <div class="section-margin">
+        <div class="container">
+            <div class="row space-db--30">
+                <div class="col-lg-8 mb--30">
+                    <div class="promo-wrapper promo-type-one">
+                        <a href="#" class="promo-image  promo-overlay bg-image"
+                            data-bg="image/bg-images/promo-banner-mid.jpg">
+                            <!-- <img src="image/bg-images/promo-banner-mid.jpg" alt=""> -->
+                        </a>
+                        <div class="promo-text">
+                            <div class="promo-text-inner">
+                                <h2>Buy 3. Get Free 1.</h2>
+                                <h3>50% off for selected products in Pustok.</h3>
+                                <a href="#" class="btn btn-outlined--red-faded">See More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb--30">
+                    <div class="promo-wrapper promo-type-two ">
+                        <a href="#" class="promo-image promo-overlay bg-image"
+                            data-bg="image/bg-images/promo-banner-small.jpg">
+                            <!-- <img src="image/bg-images/promo-banner-small.jpg" alt=""> -->
+                        </a>
+                        <div class="promo-text">
+                            <div class="promo-text-inner">
+                                <span class="d-block price">$26.00</span>
+                                <h2>Praise for <br>
+                                    The Night Child</h2>
+                                <a href="#" class="btn btn-outlined--primary">Buy Now</a>
                             </div>
                         </div>
                     </div>
@@ -73,105 +357,619 @@ Hero Area
             </div>
         </div>
     </div>
-</section>
-
-<section class="">
-    <div class="content" id="bodycontainer">
-        <div class="mainContentContainer mainContentContainer--promo">
-            <div class="mainContent ">
-                <div class="mainContentFloat ">
-                    <div class="leftContainer">
-                        <div class="sellingPointBoxLeft">
-                            <h2>Deciding what to read next?</h2>
-                            <p class="u-defaultType">
-                                You’re in the right place. Tell us what titles or genres you’ve enjoyed in the past, and
-                                we’ll give you surprisingly insightful recommendations.
-                            </p>
+    <!--=================================
+    ARTS & PHOTOGRAPHY BOOKS
+    ===================================== -->
+    <section class="section-margin">
+        <div class="container">
+            <div class="section-title section-title--bordered">
+                <h2>ARTS & PHOTOGRAPHY BOOKS</h2>
+            </div>
+            <div class="product-slider sb-slick-slider slider-border-single-row" data-slick-setting='{
+            "autoplay": true,
+            "autoplaySpeed": 8000,
+            "slidesToShow": 5,
+            "dots":true
+        }' data-slick-responsive='[
+            {"breakpoint":1500, "settings": {"slidesToShow": 4} },
+            {"breakpoint":992, "settings": {"slidesToShow": 3} },
+            {"breakpoint":768, "settings": {"slidesToShow": 2} },
+            {"breakpoint":480, "settings": {"slidesToShow": 1} },
+            {"breakpoint":320, "settings": {"slidesToShow": 1} }
+        ]'>
+                <div class="single-slide">
+                    <div class="product-card">
+                        <div class="product-header">
+                            <a href="#" class="author">
+                                Lpple
+                            </a>
+                            <h3><a href="product-details.html">Revolutionize Your BOOK With These Easy
+                              </a></h3>
                         </div>
-
-                        <div class="sellingPointBoxRight">
-                            <h2>What are your friends reading?</h2>
-                            <p class="u-defaultType">
-                                Chances are your friends are discussing their favorite
-                                (and least favorite) books on Goodreads.
-                            </p>
-                        </div>
-
-                        <div id="discoveryBox">
-                            <h2>What will <em>you</em> discover?</h2>
-                            <div class="discoveryBoxDiscovery sourceBooks3">
-                                <div class="discoverySourceBooks">
-                                    <p class="discoverySourceActionText">Because Shomeret liked&hellip;</p>
-                                    <a href="/book/show/7366.Animals_in_Translation"><img
-                                            alt="Animals in Translation by Temple Grandin"
-                                            title="Animals in Translation by Temple Grandin" width="80"
-                                            class="bookImgSimilar"
-                                            src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1442375726l/7366._SX98_.jpg" /></a>
-                                    <a href="/book/show/4386485-animals-make-us-human"><img
-                                            alt="Animals Make Us Human by Temple Grandin"
-                                            title="Animals Make Us Human by Temple Grandin" width="80"
-                                            class="bookImgSimilar"
-                                            src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348264535l/4386485._SX98_.jpg" /></a>
-                                    <a href="/book/show/6953508-some-we-love-some-we-hate-some-we-eat"><img
-                                            alt="Some We Love, Some We Hate, Some We Eat by Hal Herzog"
-                                            title="Some We Love, Some We Hate, Some We Eat by Hal Herzog" width="80"
-                                            class="bookImgSimilar"
-                                            src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1369453733l/6953508._SX98_.jpg" /></a>
-                                </div>
-
-
-                                <div class="discoveryBoxResultBook">
-                                    <p class="discoveryBoxResultActionText">She discovered:</p>
-                                    <p class="discoveryBoxResultDescriptors">Psychology, Animals, Science, Nature</p>
-                                    <a href="/book/show/325779.Next_of_Kin"><img alt="Next of Kin by Roger Fouts"
-                                            title="Next of Kin by Roger Fouts" width="80" class="bookImgDiscovered"
-                                            src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348810069l/325779._SX98_.jpg" /></a>
-                                </div>
-
-                                <div class="discoveryBoxArrow">
-                                    <img alt="&amp;rarr;"
-                                        src="https://s.gr-assets.com/assets/home/discovery_arrow-f1e8677f2c8b68500ed82ef0d5b7c59b.png" />
+                        <div class="product-card--body">
+                            <div class="card-image">
+                                <img src="image/products/product-2.jpg" alt="">
+                                <div class="hover-contents">
+                                    <a href="product-details.html" class="hover-image">
+                                        <img src="image/products/product-1.jpg" alt="">
+                                    </a>
+                                    <div class="hover-btns">
+                                        <a href="cart.html" class="single-btn">
+                                            <i class="fas fa-shopping-basket"></i>
+                                        </a>
+                                        <a href="wishlist.html" class="single-btn">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a href="compare.html" class="single-btn">
+                                            <i class="fas fa-random"></i>
+                                        </a>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quickModal"
+                                            class="single-btn">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="discoveryBoxDiscovery sourceBooks4">
-                                <div class="discoverySourceBooks">
-                                    <p class="discoverySourceActionText">Because ♥Meagan♥ liked&hellip;</p>
-                                    <a href="/book/show/929.Memoirs_of_a_Geisha"><img
-                                            alt="Memoirs of a Geisha by Arthur Golden"
-                                            title="Memoirs of a Geisha by Arthur Golden" width="80"
-                                            class="bookImgSimilar"
-                                            src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1409595968l/929._SX98_.jpg" /></a>
-                                    <a href="/book/show/39832183-the-guernsey-literary-and-potato-peel-pie-society"><img
-                                            alt="The Guernsey Literary and Potato Peel Pie Society by Mary Ann Shaffer"
-                                            title="The Guernsey Literary and Potato Peel Pie Society by Mary Ann Shaffer"
-                                            width="80" class="bookImgSimilar"
-                                            src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1529026760l/39832183._SX98_.jpg" /></a>
-                                    <a href="/book/show/43641.Water_for_Elephants"><img
-                                            alt="Water for Elephants by Sara Gruen"
-                                            title="Water for Elephants by Sara Gruen" width="80" class="bookImgSimilar"
-                                            src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1667708346l/43641._SX98_.jpg" /></a>
-                                    <a href="/book/show/4667024-the-help"><img alt="The Help by Kathryn Stockett"
-                                            title="The Help by Kathryn Stockett" width="80" class="bookImgSimilar"
-                                            src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1622355533l/4667024._SX98_.jpg" /></a>
+                            <div class="price-block">
+                                <span class="price">£51.20</span>
+                                <del class="price-old">£51.20</del>
+                                <span class="price-discount">20%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <div class="product-card">
+                        <div class="product-header">
+                            <a href="" class="author">
+                                Jpple
+                            </a>
+                            <h3><a href="product-details.html">Turn Your BOOK Into High Machine</a>
+                            </h3>
+                        </div>
+                        <div class="product-card--body">
+                            <div class="card-image">
+                                <img src="image/products/product-2.jpg" alt="">
+                                <div class="hover-contents">
+                                    <a href="product-details.html" class="hover-image">
+                                        <img src="image/products/product-1.jpg" alt="">
+                                    </a>
+                                    <div class="hover-btns">
+                                        <a href="cart.html" class="single-btn">
+                                            <i class="fas fa-shopping-basket"></i>
+                                        </a>
+                                        <a href="wishlist.html" class="single-btn">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a href="compare.html" class="single-btn">
+                                            <i class="fas fa-random"></i>
+                                        </a>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quickModal"
+                                            class="single-btn">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </div>
                                 </div>
-
-
-                                <div class="discoveryBoxResultBook">
-                                    <p class="discoveryBoxResultActionText">She discovered:</p>
-                                    <p class="discoveryBoxResultDescriptors">Historical Fiction, Book Club</p>
-                                    <a href="/book/show/3273.Moloka_i"><img alt="Moloka&#39;i by Alan Brennert"
-                                            title="Moloka&#39;i by Alan Brennert" width="80" class="bookImgDiscovered"
-                                            src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1441920261l/3273._SX98_.jpg" /></a>
+                            </div>
+                            <div class="price-block">
+                                <span class="price">£51.20</span>
+                                <del class="price-old">£51.20</del>
+                                <span class="price-discount">20%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <div class="product-card">
+                        <div class="product-header">
+                            <a href="" class="author">
+                                Wpple
+                            </a>
+                            <h3><a href="product-details.html">Create Better BOOK With The Help Of Your</a></h3>
+                        </div>
+                        <div class="product-card--body">
+                            <div class="card-image">
+                                <img src="image/products/product-3.jpg" alt="">
+                                <div class="hover-contents">
+                                    <a href="product-details.html" class="hover-image">
+                                        <img src="image/products/product-2.jpg" alt="">
+                                    </a>
+                                    <div class="hover-btns">
+                                        <a href="cart.html" class="single-btn">
+                                            <i class="fas fa-shopping-basket"></i>
+                                        </a>
+                                        <a href="wishlist.html" class="single-btn">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a href="compare.html" class="single-btn">
+                                            <i class="fas fa-random"></i>
+                                        </a>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quickModal"
+                                            class="single-btn">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </div>
                                 </div>
-
-                                <div class="discoveryBoxArrow">
-                                    <img alt="&amp;rarr;"
-                                        src="https://s.gr-assets.com/assets/home/discovery_arrow-f1e8677f2c8b68500ed82ef0d5b7c59b.png" />
+                            </div>
+                            <div class="price-block">
+                                <span class="price">£51.20</span>
+                                <del class="price-old">£51.20</del>
+                                <span class="price-discount">20%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <div class="product-card">
+                        <div class="product-header">
+                            <a href="" class="author">
+                                Epple
+                            </a>
+                            <h3><a href="product-details.html">What You Can Learn From Bill Gates</a>
+                            </h3>
+                        </div>
+                        <div class="product-card--body">
+                            <div class="card-image">
+                                <img src="image/products/product-5.jpg" alt="">
+                                <div class="hover-contents">
+                                    <a href="product-details.html" class="hover-image">
+                                        <img src="image/products/product-4.jpg" alt="">
+                                    </a>
+                                    <div class="hover-btns">
+                                        <a href="cart.html" class="single-btn">
+                                            <i class="fas fa-shopping-basket"></i>
+                                        </a>
+                                        <a href="wishlist.html" class="single-btn">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a href="compare.html" class="single-btn">
+                                            <i class="fas fa-random"></i>
+                                        </a>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quickModal"
+                                            class="single-btn">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="price-block">
+                                <span class="price">£51.20</span>
+                                <del class="price-old">£51.20</del>
+                                <span class="price-discount">20%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <div class="product-card">
+                        <div class="product-header">
+                            <a href="" class="author">
+                                Hpple
+                            </a>
+                            <h3><a href="product-details.html">a Half Very Simple Things You To Save</a></h3>
+                        </div>
+                        <div class="product-card--body">
+                            <div class="card-image">
+                                <img src="image/products/product-6.jpg" alt="">
+                                <div class="hover-contents">
+                                    <a href="product-details.html" class="hover-image">
+                                        <img src="image/products/product-4.jpg" alt="">
+                                    </a>
+                                    <div class="hover-btns">
+                                        <a href="cart.html" class="single-btn">
+                                            <i class="fas fa-shopping-basket"></i>
+                                        </a>
+                                        <a href="wishlist.html" class="single-btn">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a href="compare.html" class="single-btn">
+                                            <i class="fas fa-random"></i>
+                                        </a>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quickModal"
+                                            class="single-btn">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="price-block">
+                                <span class="price">£51.20</span>
+                                <del class="price-old">£51.20</del>
+                                <span class="price-discount">20%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <div class="product-card">
+                        <div class="product-header">
+                            <a href="#" class="author">
+                                Bpple
+                            </a>
+                            <h3><a href="product-details.html">Here Is A Quick Cure For Book</a></h3>
+                        </div>
+                        <div class="product-card--body">
+                            <div class="card-image">
+                                <img src="image/products/product-8.jpg" alt="">
+                                <div class="hover-contents">
+                                    <a href="product-details.html" class="hover-image">
+                                        <img src="image/products/product-7.jpg" alt="">
+                                    </a>
+                                    <div class="hover-btns">
+                                        <a href="cart.html" class="single-btn">
+                                            <i class="fas fa-shopping-basket"></i>
+                                        </a>
+                                        <a href="wishlist.html" class="single-btn">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a href="compare.html" class="single-btn">
+                                            <i class="fas fa-random"></i>
+                                        </a>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quickModal"
+                                            class="single-btn">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="price-block">
+                                <span class="price">£51.20</span>
+                                <del class="price-old">£51.20</del>
+                                <span class="price-discount">20%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <div class="product-card">
+                        <div class="product-header">
+                            <a href="#" class="author">
+                                zpple
+                            </a>
+                            <h3><a href="product-details.html">Do You Really Need It? This Will Help You
+                              </a>
+                            </h3>
+                        </div>
+                        <div class="product-card--body">
+                            <div class="card-image">
+                                <img src="image/products/product-13.jpg" alt="">
+                                <div class="hover-contents">
+                                    <a href="product-details.html" class="hover-image">
+                                        <img src="image/products/product-11.jpg" alt="">
+                                    </a>
+                                    <div class="hover-btns">
+                                        <a href="cart.html" class="single-btn">
+                                            <i class="fas fa-shopping-basket"></i>
+                                        </a>
+                                        <a href="wishlist.html" class="single-btn">
+                                            <i class="fas fa-heart"></i>
+                                        </a>
+                                        <a href="compare.html" class="single-btn">
+                                            <i class="fas fa-random"></i>
+                                        </a>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quickModal"
+                                            class="single-btn">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="price-block">
+                                <span class="price">£51.20</span>
+                                <del class="price-old">£51.20</del>
+                                <span class="price-discount">20%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+        Promotion Section Three
+    ===================================== -->
+    <section class="section-margin">
+        <div class="promo-wrapper promo-type-three">
+            <a href="#" class="promo-image promo-overlay bg-image" data-bg="image/bg-images/promo-banner-full.jpg">
+            </a>
+            <div class="promo-text w-100 ml-0">
+                <div class="container">
+                    <div class="row w-100">
+                        <div class="col-lg-7">
+                            <h2>I Love This Idea!</h2>
+                            <h3>Cover up front of book and
+                                leave summary</h3>
+                            <a href="#" class="btn btn--yellow">$78.09 - Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+    Home Blog Slider
+    ===================================== -->
+    <!--=================================
+    Home Blog
+    ===================================== -->
+    <section class="section-margin">
+        <div class="container">
+            <div class="section-title">
+                <h2>LATEST BLOGS</h2>
+            </div>
+            <div class="blog-slider sb-slick-slider" data-slick-setting='{
+            "autoplay": true,
+            "autoplaySpeed": 8000,
+            "slidesToShow": 2,
+            "dots": true
+        }' data-slick-responsive='[
+            {"breakpoint":1200, "settings": {"slidesToShow": 1} }
+        ]'>
+                <div class="single-slide">
+                    <div class="blog-card">
+                        <div class="image">
+                                <img src="{% static 'image/others/blog-grid-1.jpg' %}" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="content-header">
+                                <div class="date-badge">
+                                    <span class="date">
+                                        13
+                                    </span>
+                                    <span class="month">
+                                        Aug
+                                    </span>
+                                </div>
+                                <h3 class="title"><a href="blog-details.html">How to Water and Care for Mounted</a>
+                                </h3>
+                            </div>
+                            <p class="meta-para"><i class="fas fa-user-edit"></i>Post by <a href="#">Hastech</a></p>
+                            <article class="blog-paragraph">
+                                <h2 class="sr-only">blog-paragraph</h2>
+                                <p>Virtual reality and 3-D technology are already well-established in the
+                                    entertainment...</p>
+                            </article>
+                            <a href="blog-details.html" class="card-link">Read More <i
+                                    class="fas fa-chevron-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <div class="blog-card">
+                        <div class="image">
+                            <img src="{% static 'image/others/blog-grid-2.jpg' %}" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="content-header">
+                                <div class="date-badge">
+                                    <span class="date">
+                                        19
+                                    </span>
+                                    <span class="month">
+                                        Jan
+                                    </span>
+                                </div>
+                                <h3 class="title"><a href="blog-details.html">Why You Never See BLOG TITLE That </a>
+                                </h3>
+                            </div>
+                            <p class="meta-para"><i class="fas fa-user-edit"></i>Post by <a href="#">Hastech</a></p>
+                            <article class="blog-paragraph">
+                                <h2 class="sr-only">blog-paragraph</h2>
+                                <p>Virtual reality and 3-D technology are already well-established in the
+                                    entertainment...</p>
+                            </article>
+                            <a href="blog-details.html" class="card-link">Read More <i
+                                    class="fas fa-chevron-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <div class="blog-card">
+                        <div class="image">
+                            <img src="{% static 'image/others/blog-grid-3.jpg' %}" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="content-header">
+                                <div class="date-badge">
+                                    <span class="date">
+                                        31
+                                    </span>
+                                    <span class="month">
+                                        Aug
+                                    </span>
+                                </div>
+                                <h3 class="title"><a href="blog-details.html">What Everyone Must Know About </a>
+                                </h3>
+                            </div>
+                            <p class="meta-para"><i class="fas fa-user-edit"></i>Post by <a href="#">Hastech</a></p>
+                            <article class="blog-paragraph">
+                                <h2 class="sr-only">blog-paragraph</h2>
+                                <p>Virtual reality and 3-D technology are already well-established in the
+                                    entertainment...</p>
+                            </article>
+                            <a href="blog-details.html" class="card-link">Read More <i
+                                    class="fas fa-chevron-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================================
+    Footer
+    ===================================== -->
+    <!-- Modal -->
+    <div class="modal fade modal-quick-view" id="quickModal" tabindex="-1" role="dialog"
+        aria-labelledby="quickModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="product-details-modal">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <!-- Product Details Slider Big Image-->
+                            <div class="product-details-slider sb-slick-slider arrow-type-two" data-slick-setting='{
+                                "slidesToShow": 1,
+                                "arrows": false,
+                                "fade": true,
+                                "draggable": false,
+                                "swipe": false,
+                                "asNavFor": ".product-slider-nav"
+                                }'>
+                                <div class="single-slide">
+                                    <img src="image/products/product-details-1.jpg" alt="">
+                                </div>
+                                <div class="single-slide">
+                                    <img src="image/products/product-details-2.jpg" alt="">
+                                </div>
+                                <div class="single-slide">
+                                    <img src="image/products/product-details-3.jpg" alt="">
+                                </div>
+                                <div class="single-slide">
+                                    <img src="image/products/product-details-4.jpg" alt="">
+                                </div>
+                                <div class="single-slide">
+                                    <img src="image/products/product-details-5.jpg" alt="">
+                                </div>
+                            </div>
+                            <!-- Product Details Slider Nav -->
+                            <div class="mt--30 product-slider-nav sb-slick-slider arrow-type-two"
+                                data-slick-setting='{
+                                    "infinite":true,
+                                      "autoplay": true,
+                                      "autoplaySpeed": 8000,
+                                      "slidesToShow": 4,
+                                      "arrows": true,
+                                      "prevArrow":{"buttonClass": "slick-prev","iconClass":"fa fa-chevron-left"},
+                                      "nextArrow":{"buttonClass": "slick-next","iconClass":"fa fa-chevron-right"},
+                                      "asNavFor": ".product-details-slider",
+                                      "focusOnSelect": true
+                                      }'>
+                                <div class="single-slide">
+                                    <img src="image/products/product-details-1.jpg" alt="">
+                                </div>
+                                <div class="single-slide">
+                                    <img src="image/products/product-details-2.jpg" alt="">
+                                </div>
+                                <div class="single-slide">
+                                    <img src="image/products/product-details-3.jpg" alt="">
+                                </div>
+                                <div class="single-slide">
+                                    <img src="image/products/product-details-4.jpg" alt="">
+                                </div>
+                                <div class="single-slide">
+                                    <img src="image/products/product-details-5.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 mt--30 mt-lg--30">
+                            <div class="product-details-info pl-lg--30 ">
+                                <p class="tag-block">Tags: <a href="#">Movado</a>, <a href="#">Omega</a></p>
+                                <h3 class="product-title">Beats EP Wired On-Ear Headphone-Black</h3>
+                                <ul class="list-unstyled">
+                                    <li>Ex Tax: <span class="list-value"> £60.24</span></li>
+                                    <li>Brands: <a href="#" class="list-value font-weight-bold"> Canon</a></li>
+                                    <li>Product Code: <span class="list-value"> model1</span></li>
+                                    <li>Reward Points: <span class="list-value"> 200</span></li>
+                                    <li>Availability: <span class="list-value"> In Stock</span></li>
+                                </ul>
+                                <div class="price-block">
+                                    <span class="price-new">£73.79</span>
+                                    <del class="price-old">£91.86</del>
+                                </div>
+                                <div class="rating-widget">
+                                    <div class="rating-block">
+                                        <span class="fas fa-star star_on"></span>
+                                        <span class="fas fa-star star_on"></span>
+                                        <span class="fas fa-star star_on"></span>
+                                        <span class="fas fa-star star_on"></span>
+                                        <span class="fas fa-star "></span>
+                                    </div>
+                                    <div class="review-widget">
+                                        <a href="">(1 Reviews)</a> <span>|</span>
+                                        <a href="">Write a review</a>
+                                    </div>
+                                </div>
+                                <article class="product-details-article">
+                                    <h4 class="sr-only">Product Summery</h4>
+                                    <p>Long printed dress with thin adjustable straps. V-neckline and wiring under
+                                        the Dust with ruffles
+                                        at the bottom
+                                        of the
+                                        dress.</p>
+                                </article>
+                                <div class="add-to-cart-row">
+                                    <div class="count-input-block">
+                                        <span class="widget-label">Qty</span>
+                                        <input type="number" class="form-control text-center" value="1">
+                                    </div>
+                                    <div class="add-cart-btn">
+                                        <a href="" class="btn btn-outlined--primary"><span
+                                                class="plus-icon">+</span>Add to Cart</a>
+                                    </div>
+                                </div>
+                                <div class="compare-wishlist-row">
+                                    <a href="" class="add-link"><i class="fas fa-heart"></i>Add to Wish List</a>
+                                    <a href="" class="add-link"><i class="fas fa-random"></i>Add to Compare</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <div class="widget-social-share">
+                        <span class="widget-label">Share:</span>
+                        <div class="modal-social-share">
+                            <a href="#" class="single-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="single-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="single-icon"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="single-icon"><i class="fab fa-google-plus-g"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--=================================
+Brands Slider
+===================================== -->
+<section class="section-margin">
+    <h2 class="sr-only">Brand Slider</h2>
+    <div class="container">
+        <div class="brand-slider sb-slick-slider border-top border-bottom" data-slick-setting='{
+                                        "autoplay": true,
+                                        "autoplaySpeed": 8000,
+                                        "slidesToShow": 6
+                                        }' data-slick-responsive='[
+            {"breakpoint":992, "settings": {"slidesToShow": 4} },
+            {"breakpoint":768, "settings": {"slidesToShow": 3} },
+            {"breakpoint":575, "settings": {"slidesToShow": 3} },
+            {"breakpoint":480, "settings": {"slidesToShow": 2} },
+            {"breakpoint":320, "settings": {"slidesToShow": 1} }
+        ]'>
+            <div class="single-slide">
+                <img src="image/others/brand-1.jpg" alt="">
+            </div>
+            <div class="single-slide">
+                <img src="image/others/brand-2.jpg" alt="">
+            </div>
+            <div class="single-slide">
+                <img src="image/others/brand-3.jpg" alt="">
+            </div>
+            <div class="single-slide">
+                <img src="image/others/brand-4.jpg" alt="">
+            </div>
+            <div class="single-slide">
+                <img src="image/others/brand-5.jpg" alt="">
+            </div>
+            <div class="single-slide">
+                <img src="image/others/brand-6.jpg" alt="">
+            </div>
+            <div class="single-slide">
+                <img src="image/others/brand-1.jpg" alt="">
+            </div>
+            <div class="single-slide">
+                <img src="image/others/brand-2.jpg" alt="">
             </div>
         </div>
     </div>

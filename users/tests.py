@@ -21,7 +21,7 @@ class RegisterTestCase(TestCase):
             }
         )
 
-        user = CustomUser.objects.get(username="sherzodergashov")
+        user = CustomUser.objects.get()
 
         self.assertEqual(user.first_name, 'Sherzod')
         self.assertEqual(user.last_name, 'Ergashov')
@@ -148,7 +148,7 @@ class LoginTestCase(TestCase):
 
     def test_logout(self):
         self.client.login(username="sherzod0101", password="love74013")
-        self.client.get(reverse("users:logout"))
+        self.client.get()
 
         user = get_user(self.client)
 
@@ -156,7 +156,7 @@ class LoginTestCase(TestCase):
 
 class ProfileTestCase(TestCase):
     def test_login_required(self):
-        response = self.client.get(reverse("users:profile"))
+        response = self.client.get()
 
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse('users:login') + "?next=/users/profile/")
@@ -172,7 +172,7 @@ class ProfileTestCase(TestCase):
         user.save()
 
         self.client.login(username="Sherzod740", password="123456789")
-        response = self.client.get(reverse("users:profile"))
+        response = self.client.get()
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, user.first_name)
@@ -201,7 +201,7 @@ class ProfileTestCase(TestCase):
             }
         )
 
-        user = CustomUser.objects.get(pk=user.pk)
+        user = CustomUser.objects.get()
 
         self.assertEqual(user.last_name, "Bahodirov")
         self.assertEqual(user.email, "sherzod12345@gmail.com")

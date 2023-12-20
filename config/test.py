@@ -21,7 +21,7 @@ class HomePageTestCase(TestCase):
         review2 = BookReview.objects.create(book=book, user=user, stars_given=4, commend="Useful book")
         review3 = BookReview.objects.create(book=book, user=user, stars_given=5, commend="good book")
 
-        response = self.client.get(reverse("home_pages") + "?page_size=2")
+        response = self.client.get()
 
         self.assertContains(response, review3.commend)
         self.assertContains(response, review2.commend)

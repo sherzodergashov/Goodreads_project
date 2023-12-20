@@ -3,17 +3,17 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import ListView
 
-from books.models import BookReview, Book
+from books.models import BookReview, Book, Type
 from books.views import BooksView
 
 def Hello(request):
     return render(request, 'Hello.html')
 def home_page(request):
     book_reviews = BookReview.objects.all().order_by("-created_at")
-    book_size = request.GET.get("page_size", 10)
+    book_size = request.GET.get()
     paginator = Paginator(book_reviews, book_size)
 
-    page_num = request.GET.get('page', 1)
+    page_num = request.GET.get()
     page_object = paginator.get_page(page_num)
 
     return render(request, "home.html", {"page_obj": page_object})
@@ -23,41 +23,23 @@ def book_list(request):
 
     return render(request, "book_list.html", {"book_review": books})
 
-def index_html_view(request):
-    books = Book.objects.all().order_by('id')
-    book_size = request.GET.get('page_size', 12)
+
+def book_random(request):
+    # featured products
+    type_book = Type.objects.all()
+    books = Book.objects.all().order_by('?')
+    book_size = request.GET.get('page_size', 16)
     paginator = Paginator(books, book_size)
 
-# def index_view(request):
-#     books = Book.objects.all().order_by('id')
-#     search_query = request.GET.get("q", "")
-#     if search_query:
-#         books = books.filter(title__icontains=search_query)
-#
-#     page_size = request.GET.get("page_size", 7)
-#     paginator = Paginator(books, page_size)
-#
-#     page_num = request.GET.get('page', 1)
-#     page_obj = paginator.get_page(page_num)
-#
-#     return render(
-#         request,
-#         "index.html",
-#         {
-#             "page_obj": page_obj,
-#             "search_query": search_query
-#          }
-#     )
+    page_num = request.GET.get('page', 1)
+    page_object = paginator.get_page(page_num)
 
-class BooksIndex(ListView):
-    model = Book
-    context_object_name = 'books_list'
-    template_name = 'index.html'
+    context = {
+        'book_list': page_object,
+        'book_type': type_book
+    }
+    return render(request, 'Hello.html', context)
 
-    def get_queryset(self):
-        most_view = Book.objects.order_by('?')
-        new_arrival = Book.objects.all().order_by('id')
-        return most_view
 def ProductDetails(request):
     return render(request, 'product-details.html')
 
