@@ -63,7 +63,7 @@
                                         <li class="cus-col-25">
                                             <h3 class="menu-title"><a href="javascript:void(0)">Shop Grid </a></h3>
                                             <ul class="mega-single-block">
-                                                <li><a href="shop-grid.html">Fullwidth</a></li>
+                                                <li><a href="{{books_page}}">Fullwidth</a></li>
                                             </ul>
                                             <hr>
                                             <h3 class="menu-title"> <a href="javascript:void(0)">Shop List</a></h3>
@@ -124,12 +124,12 @@
                     <div class="col-lg-3">
                         <nav class="category-nav">
                             <div>
-                                <a href="javascript:void(0)" class="category-trigger"><i class="bi bi-list"></i>Browse categories</a>
+                                <a href="javascript:void(0)"  class="category-trigger"><i class="bi bi-list"></i>Browse categories</a>
                                 <ul class="category-menu">
                                     {% for types in book_type %}
-                                    <li class="cat-item has-children">
-                                        <a href="#">{{types.name}}</a>
-                                    </li>
+                                        <li class="cat-item">
+                                            <a href="/">{{types}}</a>
+                                        </li>
                                     {% endfor %}
                                 </ul>
                             </div>
@@ -224,111 +224,15 @@
                         </a>
                     </div>
                     <div class="col-md-5 order-3 order-md-2">
-                        <nav class="category-nav   ">
+                        <nav class="category-nav">
                             <div>
-                                <a href="javascript:void(0)" class="category-trigger"><i
-                                        class="fa fa-bars"></i>Browse categories</a>
+                                <a href="javascript:void(0)"  class="category-trigger"><i class="bi bi-list"></i>Browse categories</a>
                                 <ul class="category-menu">
-                                    <li class="cat-item has-children">
-                                        <a href="#">Arts & Photography</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="#">Bags & Cases</a></li>
-                                            <li><a href="#">Binoculars & Scopes</a></li>
-                                            <li><a href="#">Digital Cameras</a></li>
-                                            <li><a href="#">Film Photography</a></li>
-                                            <li><a href="#">Lighting & Studio</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="cat-item has-children mega-menu"><a href="#">Biographies</a>
-                                        <ul class="sub-menu">
-                                            <li class="single-block">
-                                                <h3 class="title">WHEEL SIMULATORS</h3>
-                                                <ul>
-                                                    <li><a href="#">Bags & Cases</a></li>
-                                                    <li><a href="#">Binoculars & Scopes</a></li>
-                                                    <li><a href="#">Digital Cameras</a></li>
-                                                    <li><a href="#">Film Photography</a></li>
-                                                    <li><a href="#">Lighting & Studio</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="single-block">
-                                                <h3 class="title">WHEEL SIMULATORS</h3>
-                                                <ul>
-                                                    <li><a href="#">Bags & Cases</a></li>
-                                                    <li><a href="#">Binoculars & Scopes</a></li>
-                                                    <li><a href="#">Digital Cameras</a></li>
-                                                    <li><a href="#">Film Photography</a></li>
-                                                    <li><a href="#">Lighting & Studio</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="single-block">
-                                                <h3 class="title">WHEEL SIMULATORS</h3>
-                                                <ul>
-                                                    <li><a href="#">Bags & Cases</a></li>
-                                                    <li><a href="#">Binoculars & Scopes</a></li>
-                                                    <li><a href="#">Digital Cameras</a></li>
-                                                    <li><a href="#">Film Photography</a></li>
-                                                    <li><a href="#">Lighting & Studio</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="single-block">
-                                                <h3 class="title">WHEEL SIMULATORS</h3>
-                                                <ul>
-                                                    <li><a href="#">Bags & Cases</a></li>
-                                                    <li><a href="#">Binoculars & Scopes</a></li>
-                                                    <li><a href="#">Digital Cameras</a></li>
-                                                    <li><a href="#">Film Photography</a></li>
-                                                    <li><a href="#">Lighting & Studio</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="cat-item has-children"><a href="#">Business & Money</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="">Brake Tools</a></li>
-                                            <li><a href="">Driveshafts</a></li>
-                                            <li><a href="">Emergency Brake</a></li>
-                                            <li><a href="">Spools</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="cat-item has-children"><a href="#">Calendars</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="">Brake Tools</a></li>
-                                            <li><a href="">Driveshafts</a></li>
-                                            <li><a href="">Emergency Brake</a></li>
-                                            <li><a href="">Spools</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="cat-item has-children"><a href="#">Children's Books</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="">Brake Tools</a></li>
-                                            <li><a href="">Driveshafts</a></li>
-                                            <li><a href="">Emergency Brake</a></li>
-                                            <li><a href="">Spools</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="cat-item has-children"><a href="#">Comics</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="">Brake Tools</a></li>
-                                            <li><a href="">Driveshafts</a></li>
-                                            <li><a href="">Emergency Brake</a></li>
-                                            <li><a href="">Spools</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="cat-item"><a href="#">Perfomance Filters</a></li>
-                                    <li class="cat-item has-children"><a href="#">Cookbooks</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="">Brake Tools</a></li>
-                                            <li><a href="">Driveshafts</a></li>
-                                            <li><a href="">Emergency Brake</a></li>
-                                            <li><a href="">Spools</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="cat-item "><a href="#">Accessories</a></li>
-                                    <li class="cat-item "><a href="#">Education</a></li>
-                                    <li class="cat-item hidden-menu-item"><a href="#">Indoor Living</a></li>
-                                    <li class="cat-item"><a href="#" class="js-expand-hidden-menu">More
-                                        Categories</a></li>
+                                    {% for types in book_type %}
+                                        <li class="cat-item">
+                                            <a href="/">{{types}}</a>
+                                        </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </nav>
@@ -467,20 +371,20 @@
                 <!-- mobile menu end -->
                 <nav class="off-canvas-nav">
                     <ul class="mobile-menu menu-block-2">
-                        <li class="menu-item-has-children">
-                            <a href="#">Currency - USD $ <i class="fas fa-angle-down"></i></a>
-                            <ul class="sub-menu">
-                                <li> <a href="cart.html">USD $</a></li>
-                                <li> <a href="checkout.html">EUR €</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="#">Lang - Eng<i class="fas fa-angle-down"></i></a>
-                            <ul class="sub-menu">
-                                <li>Eng</li>
-                                <li>Ban</li>
-                            </ul>
-                        </li>
+<!--                        <li class="menu-item-has-children">-->
+<!--                            <a href="#">Currency - USD $ <i class="fas fa-angle-down"></i></a>-->
+<!--                            <ul class="sub-menu">-->
+<!--                                <li> <a href="cart.html">USD $</a></li>-->
+<!--                                <li> <a href="checkout.html">EUR €</a></li>-->
+<!--                            </ul>-->
+<!--                        </li>-->
+<!--                        <li class="menu-item-has-children">-->
+<!--                            <a href="#">Lang - Eng<i class="fas fa-angle-down"></i></a>-->
+<!--                            <ul class="sub-menu">-->
+<!--                                <li>Eng</li>-->
+<!--                                <li>Ban</li>-->
+<!--                            </ul>-->
+<!--                        </li>-->
                         <li class="menu-item-has-children">
                             <a href="#">My Account <i class="fas fa-angle-down"></i></a>
                             <ul class="sub-menu">
@@ -494,16 +398,14 @@
                 </nav>
                 <div class="off-canvas-bottom">
                     <div class="contact-list mb--10">
-                        <a href="" class="sin-contact"><i class="fas fa-mobile-alt"></i>(12345) 78790220</a>
-                        <a href="" class="sin-contact"><i class="fas fa-envelope"></i>examle@handart.com</a>
+                        <a href="" class="sin-contact"><i class="fas fa-mobile-alt"></i>+998 93 320 45 01</a>
+                        <a href="" class="sin-contact"><i class="fas fa-envelope"></i>sherzod.ergashov4501@gmail.com</a>
                     </div>
                     <div class="off-canvas-social">
-                        <a href="#" class="single-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="single-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="single-icon"><i class="fas fa-rss"></i></a>
-                        <a href="#" class="single-icon"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="single-icon"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="#" class="single-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://github.com/sherzodergashov" class="single-icon"><i class="bi bi-github"></i></a>
+                        <a href="https://www.instagram.com/sherzod.ergashov.4501" class="single-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.youtube.com" class="single-icon"><i class="bi bi-youtube"></i></a>
+                        <a href="https://t.me/uchuvchi_havo_yollar" class="single-icon"><i class="bi bi-telegram"></i></a>
                     </div>
                 </div>
             </div>

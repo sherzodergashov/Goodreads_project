@@ -4,56 +4,111 @@
 
 {% block content %}
 {% load static %}
-<h1>Book Pages</h1>
+<div class="site-wrapper" id="top">
+	<main class="inner-page-sec-padding-bottom">
+		<div class="container">
+			<h1>Book Pages</h1>
+			<div class="row mb-3">
+				<form class="d-flex" method="get">
+					<div class="input-group mb-3 header-search-block">
+						<input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+						<button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+					</div>
+				</form>
+			</div>
+			<div class="shop-product-wrap list with-pagination row space-db--30 shop-border my-4">
+				{% if page_obj %}
+					{% for book in page_obj.object_list %}
+						<div class="col-lg-4 col-sm-6">
+							<div class="product-card card-style-list">
+								<div class="product-list-content">
+									<div class="card-image">
+										<img src="{{ book.cover_picture.url }}" alt="">
+									</div>
+									<div class="product-card--body">
+										<div class="product-header">
+											<a href="" class="author">
+												Gpple
+											</a>
+											<h3><a href="product-details.html" tabindex="0">{{ book.title }}</a></h3>
+										</div>
+										<article>
+											<h2 class="sr-only">Card List Article</h2>
+											<p>{{book.description | truncatechars:350}}</p>
+										</article>
+										<div class="price-block">
+											<span class="price">£51.20</span>
+											<del class="price-old">£51.20</del>
+											<span class="price-discount">20%</span>
+										</div>
+										<div class="rating-block">
+											<span class="fas fa-star star_on"></span>
+											<span class="fas fa-star star_on"></span>
+											<span class="fas fa-star star_on"></span>
+											<span class="fas fa-star star_on"></span>
+											<span class="fas fa-star "></span>
+										</div>
+										<div class="btn-block">
+											<a href="{% url 'books:datail' book.id %}" class="btn btn-outlined">Add To Cart</a>
+											<a href="" class="card-link"><i class="fas fa-heart"></i> Add To Wishlist</a>
+											<a href="" class="card-link"><i class="fas fa-random"></i> Add To Cart</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+<!--				{% for book in page_obj.object_list %}-->
+<!--					<div class="row g-0 bg-body-secondary position-relative mb-3">-->
+<!--						<div class="col-md-2 mb-md-0 p-md-4">-->
+<!--							<img src="{{ book.cover_picture.url }}" class="cover-pic" alt="books">-->
+<!--						</div>-->
+<!--						<div class="col-md-6 p-4 ps-md-0">-->
+<!--							<h5 class="mt-0">{{ book.title }}</h5>-->
+<!--							<p>-->
+<!--								{{ book.description }}-->
+<!--							</p>-->
+<!--							<a class="stretched-link" href="{% url 'books:datail' book.id %}"> {{ book.title }} <i class="bi bi-forward-fill"></i></a>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				{% endfor %}-->
 
-<div class="row mb-3">
-    <div class="col-4">
-        <form class="d-flex" method="get">
-            <input class="form-control me-2" type="text" placeholder="Search" name="q" value="{{ search_query }}">
+				<nav>
+					<ul class="pagination">
+						{% if page_obj.has_previous %}
+							<li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
+							<li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+						{% endif %}
 
-            <button class="btn btn-success">Search</button>
-        </form>
-    </div>
+						<li class="page-item active" aria-current="page">
+						  <a class="page-link" href="#">{{ page_obj.number }}</a>
+						</li>
+
+						{% if page_obj.has_next %}
+							<li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+							<li class="page-item">
+							  <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last&raquo;</a>
+							</li>
+						{% endif %}
+					</ul>
+				</nav>
+
+				{% else %}
+					No book found.
+				{% endif %}
+			</div>
+		</div>
+	</main>
 </div>
 
 
-{% if page_obj %}
-    {% for book in page_obj.object_list %}
-        <div class="row g-0 bg-body-secondary position-relative mb-3">
-            <div class="col-md-2 mb-md-0 p-md-4">
-                <img src="{{ book.cover_picture.url }}" class="cover-pic" alt="books">
-            </div>
-            <div class="col-md-6 p-4 ps-md-0">
-                <h5 class="mt-0">{{ book.title }}</h5>
-                <p>
-                    {{ book.description }}
-                </p>
-                <a class="stretched-link" href="{% url 'books:datail' book.id %}"> {{ book.title }} <i class="bi bi-forward-fill"></i></a>
-            </div>
-        </div>
-    {% endfor %}
 
-    <nav>
-        <ul class="pagination">
-            {% if page_obj.has_previous %}
-                <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
-                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
-            {% endif %}
 
-            <li class="page-item active" aria-current="page">
-              <a class="page-link" href="#">{{ page_obj.number }}</a>
-            </li>
-
-            {% if page_obj.has_next %}
-                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last&raquo;</a>
-                </li>
-            {% endif %}
-        </ul>
-    </nav>
-
-{% else %}
-    No book found.
-{% endif %}
+<!--=================================
+  Brands Slider
+===================================== -->
+	<!-- Use Minified Plugins Version For Fast Page Load -->
+	<script src="js/plugins.js"></script>
+	<script src="js/ajax-mail.js"></script>
+	<script src="js/custom.js"></script>
 {% endblock %}
