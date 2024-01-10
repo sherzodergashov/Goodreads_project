@@ -4,31 +4,32 @@
 {% block title %}Register Page{% endblock %}
 
 {% block content %}
-    <h3>Register</h3>
+<div class="site-wrapper" id="top">
+	<main class="inner-page-sec-padding-bottom">
+		<div class="container">
+            <h3>Register</h3>
+            <div class="row">
+                <div class="col-4">
+                    <form method="post" action="{% url 'users:register' %}">
+                        {% csrf_token %}
+                            {{ form | crispy }}
+                        <!--    <label for="username">Username</label>-->
+                        <!--    <input type="text" id="username" name="username"> <br><br>-->
+                        <!--    <label for="first_name">First_name</label>-->
+                        <!--    <input type="text" id="first_name" name="first_name"> <br><br>-->
+                        <!--    <label for="last_name">Last_name</label>-->
+                        <!--    <input type="text" id="last_name" name="last_name"><br><br>-->
+                        <!--    <label for="email">Email</label>-->
+                        <!--    <input type="email" id="email" name="email"><br><br>-->
+                        <!--    <label for="password">Password</label>-->
+                        <!--    <input type="password" id="password" name="password"><br><br>-->
+                        <button class="btn btn-outlined mb-3" type="submit">Submit</button>
+                    </form>
 
-    <div class="row">
-        <div class="col-4">
-            <form method="post" action="{% url 'users:register' %}">
-                {% csrf_token %}
-                    {{ form | crispy }}
-
-
-                <!--    <label for="username">Username</label>-->
-                <!--    <input type="text" id="username" name="username"> <br><br>-->
-                <!--    <label for="first_name">First_name</label>-->
-                <!--    <input type="text" id="first_name" name="first_name"> <br><br>-->
-                <!--    <label for="last_name">Last_name</label>-->
-                <!--    <input type="text" id="last_name" name="last_name"><br><br>-->
-                <!--    <label for="email">Email</label>-->
-                <!--    <input type="email" id="email" name="email"><br><br>-->
-                <!--    <label for="password">Password</label>-->
-                <!--    <input type="password" id="password" name="password"><br><br>-->
-                <button class="btn btn-outlined mb-3" type="submit">Submit</button>
-            </form>
-
+                </div>
+            </div>
         </div>
-    </div>
-
-
+    </main>
+</div>
 
 {% endblock %}

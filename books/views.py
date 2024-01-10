@@ -4,13 +4,11 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
-
 from books.forms import BookReviewForm
-from books.models import Book, BookReview
+from books.models import Book, BookReview, Type
 
 def BookViews(request):
     return render(request, 'books.html')
-
 
 class BooksView(View):
     @staticmethod
@@ -25,6 +23,7 @@ class BooksView(View):
 
         page_num = request.GET.get('page', 1)
         page_obj = paginator.get_page(page_num)
+        type_book = Type.objects.all()
 
         return render(
             request,
@@ -32,21 +31,30 @@ class BooksView(View):
             # "books/datail.html",
             {
                 "page_obj": page_obj,
-                "search_query": search_query
+                "search_query": search_query,
+                'book_type': type_book
              }
         )
 
 class BookDatailView(View):
     @staticmethod
     def get(request, id):
+        type_book = Type.objects.all()
+
         book = Book.objects.get(id=id)
         review_form = BookReviewForm()
+        review_detail = BookReview.objects.filter(id=id)
 
-        return render(request, "books/datail.html", {"book": book, "review_form": review_form})
-
+        return render(request, "books/datail.html", {
+            "book": book,
+            "review_form": review_form,
+            'review_detail': review_detail,
+            'book_type': type_book
+        })
 
 class AddReviewView(LoginRequiredMixin, View):
     def post(self, request, id):
+        type_book = Type.objects.all()
         book = Book.objects.get(id=id)
         review_form = BookReviewForm(data=request.POST)
 
@@ -58,35 +66,55 @@ class AddReviewView(LoginRequiredMixin, View):
                 commend=review_form.cleaned_data['commend']
             )
             return redirect(reverse("books:datail", kwargs={"id": book.id}))
-        return render(request, "books/datail.html", {"book": book, "review_form": review_form})
+        return render(request, "books/datail.html", {
+            "book": book,
+            "review_form": review_form,
+            'book_type': type_book
+        })
 
 
 class EditReviewView(LoginRequiredMixin, View):
     def get(self, request, book_id, review_id):
+        type_book = Type.objects.all()
         book = Book.objects.get(id=book_id)
         review = book.bookreview_set.get(id=review_id)
         review_form = BookReviewForm(instance=review)
 
-        return render(request, 'books/edit_review.html', {"book": book, "review": review, "review_form": review_form})
+        return render(request, 'books/edit_review.html', {
+            "book": book,
+            "review": review,
+            "review_form": review_form,
+            'book_type': type_book
+        })
 
     def post(self, request, book_id, review_id):
         book = Book.objects.get(id=book_id)
         review = book.bookreview_set.get(id=review_id)
         review_form = BookReviewForm(instance=review, data=request.POST)
+        type_book = Type.objects.all()
 
         if review_form.is_valid():
             review_form.save()
             return redirect(reverse("books:datail", kwargs={"id": book.id}))
 
-        return render(request, 'books/edit_review.html', {"book": book, "review": review, "review_form": review_form})
+        return render(request, 'books/edit_review.html', {
+            "book": book, "review": review,
+            "review_form": review_form,
+            'book_type': type_book
+        })
 
 
 class ConfirmDeleteReviewView(LoginRequiredMixin, View):
     def get(self, request, book_id, review_id):
         book = Book.objects.get(id=book_id)
         review = book.bookreview_set.get(id=review_id)
+        type_book = Type.objects.all()
 
-        return render(request, "books/confirm_delete_review.html", {'book': book, 'review': review})
+        return render(request, "books/confirm_delete_review.html", {
+            'book': book,
+            'review': review,
+            'book_type': type_book
+        })
 
 class DeleteReviewView(LoginRequiredMixin, View):
     def get(self, request, book_id, review_id):

@@ -3,6 +3,7 @@
 
 {% url "home_pages" as home_page %}
 {% url 'books:list' as books_page %}
+{% url "books:datail" as book_view %}
 {% url 'users:profile' as profile_page %}
 {% url 'users:profile_edit' as profile-edit-page %}
 <html lang="en">
@@ -63,7 +64,7 @@
                                         <li class="cus-col-25">
                                             <h3 class="menu-title"><a href="javascript:void(0)">Shop Grid </a></h3>
                                             <ul class="mega-single-block">
-                                                <li><a href="{{books_page}}">Fullwidth</a></li>
+                                                <li><a href="{{books_page}}">Books List</a></li>
                                             </ul>
                                             <hr>
                                             <h3 class="menu-title"> <a href="javascript:void(0)">Shop List</a></h3>
@@ -73,7 +74,7 @@
                                             <hr>
                                             <h3 class="menu-title"> <a href="javascript:void(0)">Product Details 1</a></h3>
                                             <ul class="mega-single-block">
-                                                <li><a href="product-details-affiliate.html">Product Details Affiliate</a></li>
+                                                <li><a href="{{book_view}}">Book View</a></li>
                                             </ul>
                                         </li>
                                     </ul>

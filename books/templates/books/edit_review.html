@@ -5,18 +5,24 @@
 
 {% block content %}
 
-    <h1>Edit Review</h1>
+<div class="site-wrapper" id="top">
+	<main class="inner-page-sec-padding-bottom">
+		<div class="container">
+            <h1>Edit Review</h1>
 
-    <div class="row mb-4">
-        <div class="col-6">
-            <form method="post" action="{% url 'books:edit-review' book.id review.id %}">
-                {% csrf_token %}
+            <div class="row mb-4">
+                <div class="col-6">
+                    <form method="post" action="{% url 'books:edit-review' book.id review.id %}">
+                        {% csrf_token %}
 
-                {{ review_form | crispy }}
+                        {{ review_form | crispy }}
 
-                <button class="btn btn-success">Save</button>
-            </form>
+                        <button class="btn btn-success">Save</button>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
+</div>
 
 {% endblock %}

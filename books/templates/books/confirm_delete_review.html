@@ -4,16 +4,21 @@
 
 {% block content %}
 
-    <h1>Are you sure you want to delete this review?</h1>
+<div class="site-wrapper" id="top">
+	<main class="inner-page-sec-padding-bottom">
+		<div class="container">
+            <h1>Are you sure you want to delete this review?</h1>
 
-       <p>
-          <b>Book</b>: {{ book.title }}
-       </p>
-       <p>
-          <b>Comment</b>: {{ review.commend }}
-       </p>
+            <p>
+                <b>Book</b>: {{ book.title }}
+            </p>
+            <p>
+                <b>Comment</b>: {{ review.commend }}
+            </p>
 
-       <a href="{% url 'books:delete-review' book.id review.id %}" class="btn btn-outline-danger">Yes</a>
-       <a href="{% url 'books:datail' book.id %}" class="btn btn-outline-primary">No</a>
-
+            <a href="{% url 'books:delete-review' book.id review.id %}" class="btn btn-outline-danger">Yes</a>
+            <a href="{% url 'books:datail' book.id %}" class="btn btn-outline-primary">No</a>
+        </div>
+    </main>
+</div>
 {% endblock %}

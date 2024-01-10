@@ -2,19 +2,23 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<div class="site-wrapper" id="top">
+	<main class="inner-page-sec-padding-bottom">
+		<div class="container">
+            <h3>Edit Profile</h3>
+            <div class="row">
+                <div class="col-4">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
 
-<h3>Edit Profile</h3>
-    <div class="row">
-        <div class="col-4">
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
+                        {{ form | crispy }}
 
-                {{ form | crispy }}
-
-                <button class="btn btn-outlined">save changes</button>
-            </form>
+                        <button class="btn btn-outlined">save changes</button>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
-
+    </main>
+</div>
 
 {% endblock %}
