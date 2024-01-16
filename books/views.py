@@ -10,6 +10,12 @@ from books.models import Book, BookReview, Type
 def BookViews(request):
     return render(request, 'books.html')
 
+def BlogView(request):
+    return render(request, 'books/book-blog.html')
+
+def NewsView(request):
+    return render(request, 'books/news.html')
+
 class BooksView(View):
     @staticmethod
     def get(request):

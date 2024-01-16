@@ -26,12 +26,10 @@ def book_list(request):
 
 
 def book_random(request):
-    # featured products
     type_book = Type.objects.all()
-    # type_size = request.GET.get()
-    # p = Paginator(type_book, type_size)
+    book_all = Book.objects.all()
     books = Book.objects.all().order_by('?')
-    book_size = request.GET.get('page_size', 16)
+    book_size = request.GET.get('page_size', 40)
     paginator = Paginator(books, book_size)
 
     page_num = request.GET.get('page', 1)
@@ -39,6 +37,7 @@ def book_random(request):
 
     context = {
         'book_list': page_object,
+        'book_all': book_all,
         'book_type': type_book
     }
     return render(request, 'Hello.html', context)

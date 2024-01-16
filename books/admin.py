@@ -5,7 +5,8 @@ from books.models import Book, Auther, BookAuthor, BookReview, Type, Order
 # Register your models here.
 
 class BookAdmin(admin.ModelAdmin):
-    search_fields = ('title', 'isbn')
+    search_fields = ('title', 'isbn', 'type')
+    list_filter = ['type']
     list_display = ('title', 'isbn', 'description')
 
 

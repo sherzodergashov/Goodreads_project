@@ -10,7 +10,7 @@
             <h1>All reviews</h1>
 
             {% for review in page_obj %}
-                <div class="container posts-content">
+                <div class="container posts-content border border-primary">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="card mb-4">
@@ -27,16 +27,18 @@
                                 <p>
                                   {{ review.commend | truncatechars:300 }}
                                 </p>
-                                  <img class="cover-pic center" src="{{ review.book.cover_picture.url }}">
+                                  <img src="{{ review.book.cover_picture.url }}" class="center" style="height: 500px; width: 325px;">
                               </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
             {% endfor %}
 
-            <nav>
-                <ul class="pagination">
+            <nav aria-label="Page navigation example" class="mx-5 my-4">
+                <ul class="pagination justify-content-center">
                     {% if page_obj.has_previous %}
                         <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
                         <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>

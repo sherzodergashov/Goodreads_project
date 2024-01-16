@@ -3,7 +3,9 @@
 
 {% url "home_pages" as home_page %}
 {% url 'books:list' as books_page %}
-{% url "books:datail" as book_view %}
+{% url 'books:blog' as blogs %}
+{% url 'books:new' as news %}
+{% url 'users:login' as page_login %}
 {% url 'users:profile' as profile_page %}
 {% url 'users:profile_edit' as profile-edit-page %}
 <html lang="en">
@@ -24,6 +26,7 @@
 
 <!--    Loyiha W disk oynasidagi yo'l-->
     <link rel="stylesheet" type="text/css" href="{% static 'CSS/w-disk/plugins.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/users/users.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'CSS/w-disk/main.css' %}" />
     <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
 
@@ -74,7 +77,8 @@
                                             <hr>
                                             <h3 class="menu-title"> <a href="javascript:void(0)">Product Details 1</a></h3>
                                             <ul class="mega-single-block">
-                                                <li><a href="{{book_view}}">Book View</a></li>
+                                                <li><a href="">Book View</a></li>
+<!--                                                reverse('books:datail', kwargs={'pk': self.pk})-->
                                             </ul>
                                         </li>
                                     </ul>
@@ -87,8 +91,8 @@
                                         <li><a href="checkout.html">Checkout</a></li>
                                         <li><a href="compare.html">Compare</a></li>
                                         <li><a href="wishlist.html">Wishlist</a></li>
-                                        <li><a href="login-register.html">Login Register</a></li>
-                                        <li><a href="my-account.html">My Account</a></li>
+                                        <li><a href="{{page_login}}">Login Register</a></li>
+                                        <li><a href="{{profile_page}}">My Account</a></li>
                                         <li><a href="order-complete.html">Order Complete</a></li>
                                         <li><a href="faq.html">Faq</a></li>
                                         <li><a href="contact-2.html">contact 02</a></li>
@@ -99,16 +103,16 @@
                                     <a href="javascript:void(0)">Blog </a>
                                     <ul class="sub-menu three-column">
                                         <li class="cus-col-33">
-                                            <h3 class="menu-title"><a href="javascript:void(0)">Blog Grid</a></h3>
+                                            <h3 class="menu-title"><a href="javascript:void(0)">News</a></h3>
                                             <ul class="mega-single-block">
-                                                <li><a href="blog.html">Full Widh (Default)</a></li>
+                                                <li><a href="{{blogs}}">Full Widh News</a></li>
                                             </ul>
                                         </li>
                                         <li class="cus-col-33">
-                                            <h3 class="menu-title"><a href="javascript:void(0)">Blog Details</a>
+                                            <h3 class="menu-title"><a href="javascript:void(0)">New Details</a>
                                             </h3>
                                             <ul class="mega-single-block">
-                                                <li><a href="blog-details.html">Image Format (Default)</a></li>
+                                                <li><a href="{{news}}">Image Format (Default)</a></li>
                                             </ul>
                                         </li>
                                     </ul>
