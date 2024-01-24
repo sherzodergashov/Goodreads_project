@@ -15,7 +15,7 @@ class BookReviewAPITestCase(APITestCase):
         book = Book.objects.create(title="book1", description="description1", isbn="123123")
         br = BookReview.objects.create(book=book, user=self.user, stars_given=5, commend='Very good book')
 
-        response = self.client.get()
+        response = self.client.get(reverse('API:reviews-api', kwargs={'id': br.id}))
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data['id'], br.id)
@@ -34,7 +34,7 @@ class BookReviewAPITestCase(APITestCase):
         br = BookReview.objects.create(book=book, user=self.user, stars_given=5, commend='Very good book')
         br_two = BookReview.objects.create(book=book, user=user_two, stars_given=3, commend='Not book')
 
-        response = self.client.get()
+        response = self.client.get(reverse('API:reviews-list-api'))
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.data['results']), 2)

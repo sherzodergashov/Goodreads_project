@@ -10,11 +10,33 @@ from books.models import Book, BookReview, Type
 def BookViews(request):
     return render(request, 'books.html')
 
+def CategorieView(request):
+    books = Book.objects.all()
+
+    page_size = request.GET.get("page_size", 6)
+    paginator = Paginator(books, page_size)
+
+    page_num = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_num)
+
+    context = {
+        "page_object": page_obj
+    }
+
+    return render(request, 'books/categories/categorie.html', context)
+
 def BlogView(request):
-    return render(request, 'books/book-blog.html')
+    return render(request, 'blogs/book-blog.html')
 
 def NewsView(request):
-    return render(request, 'books/news.html')
+    return render(request, 'blogs/news.html')
+
+def WishListView(request):
+    return render(request, 'blogs/wishlist.html')
+
+def CartView(request):
+    return render(request, 'blogs/cart.html')
+
 
 class BooksView(View):
     @staticmethod
@@ -30,12 +52,14 @@ class BooksView(View):
         page_num = request.GET.get('page', 1)
         page_obj = paginator.get_page(page_num)
         type_book = Type.objects.all()
+        book_review = BookReview.objects.all()
 
         return render(
             request,
             "books/list.html",
             # "books/datail.html",
             {
+                "b_review": book_review,
                 "page_obj": page_obj,
                 "search_query": search_query,
                 'book_type': type_book

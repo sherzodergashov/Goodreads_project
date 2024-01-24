@@ -2,7 +2,7 @@ from django.urls import path
 
 from books.views import BooksView, BookDatailView, AddReviewView, \
     EditReviewView, ConfirmDeleteReviewView, DeleteReviewView, \
-    BlogView, NewsView
+    BlogView, NewsView, WishListView, CartView, CategorieView
 
 app_name = "books"
 urlpatterns = [
@@ -18,5 +18,8 @@ urlpatterns = [
          name='delete-review'),
     path('blog/', BlogView, name='blog'),
     path('blog/news/', NewsView, name='new'),
+    path('wishlist/', WishListView, name='wishlist'),
+    path('cart/', CartView, name='cart'),
+    path('type/categories/', CategorieView, name='categories'),
 
 ]

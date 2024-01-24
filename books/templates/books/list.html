@@ -7,7 +7,7 @@
 <div class="site-wrapper" id="top">
 	<main class="inner-page-sec-padding-bottom">
 		<div class="container">
-			<h1>Book Pages</h1>
+			<h1 style="text-align: center;">Book Pages</h1>
 			<div class="row mb-3">
 				<form class="d-flex" method="get">
 					<div class="input-group mb-3 header-search-block">
@@ -28,9 +28,9 @@
 									<div class="product-card--body">
 										<div class="product-header">
 											<a href="" class="author">
-												Gpple
+												{{book.type.name}}
 											</a>
-											<h3><a href="product-details.html" tabindex="0">{{ book.title }}</a></h3>
+											<h3><a href="{% url 'books:datail' book.id %}" tabindex="0">{{ book.title }}</a></h3>
 										</div>
 										<article>
 											<h2 class="sr-only">Card List Article</h2>
@@ -42,6 +42,11 @@
 											<span class="price-discount">20%</span>
 										</div>
 										<div class="rating-block">
+											{% for book_review in b_review %}
+												<div>
+													{{ book_review.stars_given }}
+												</div>
+											{% endfor %}
 											<span class="fas fa-star star_on"></span>
 											<span class="fas fa-star star_on"></span>
 											<span class="fas fa-star star_on"></span>
@@ -58,23 +63,9 @@
 							</div>
 						</div>
 					{% endfor %}
-<!--				{% for book in page_obj.object_list %}-->
-<!--					<div class="row g-0 bg-body-secondary position-relative mb-3">-->
-<!--						<div class="col-md-2 mb-md-0 p-md-4">-->
-<!--							<img src="{{ book.cover_picture.url }}" class="cover-pic" alt="books">-->
-<!--						</div>-->
-<!--						<div class="col-md-6 p-4 ps-md-0">-->
-<!--							<h5 class="mt-0">{{ book.title }}</h5>-->
-<!--							<p>-->
-<!--								{{ book.description }}-->
-<!--							</p>-->
-<!--							<a class="stretched-link" href="{% url 'books:datail' book.id %}"> {{ book.title }} <i class="bi bi-forward-fill"></i></a>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--				{% endfor %}-->
 
-				<nav>
-					<ul class="pagination">
+				<nav aria-label="Page navigation example" class="mx-5 my-4">
+					<ul class="pagination justify-content-center">
 						{% if page_obj.has_previous %}
 							<li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
 							<li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>

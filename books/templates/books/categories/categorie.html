@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Categories Page{% endblock %}
+
+{% block content %}
+
+<div class="site-wrapper" id="top">
+	<main class="inner-page-sec-padding-bottom">
+		<div class="container">
+			<h1 style="text-align: center;">Categories Page</h1>
+			<div class="shop-product-wrap list with-pagination row space-db--30 shop-border my-4">
+				{% if page_object %}
+					{% for categories in page_object.object_list %}
+						<div class="card mb-3 border-secondary mb-3" style="max-width: 540px;">
+						  <div class="row g-0">
+							<div class="card-header">{{categories.type.name}}</div>
+							<div class="col-md-4 center">
+							  <img src="{{categories.cover_picture.url}}" class="img-fluid rounded-start" alt="...">
+							</div>
+							<div class="col-md-8">
+							  <div class="card-body">
+								<h5 class="card-title">{{categories.title}}</h5>
+								<p class="card-text">{{categories.description | truncatechars:350}}</p>
+								<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					{% endfor %}
+
+					<nav aria-label="Page navigation example" class="mx-5 my-4">
+						<ul class="pagination justify-content-center">
+							{% if page_object.has_previous %}
+								<li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
+								<li class="page-item"><a class="page-link" href="?page={{ page_object.previous_page_number }}">Previous</a></li>
+							{% endif %}
+
+							<li class="page-item active" aria-current="page">
+							  <a class="page-link" href="#">{{ page_object.number }}</a>
+							</li>
+
+							{% if page_object.has_next %}
+								<li class="page-item"><a class="page-link" href="?page={{ page_object.next_page_number }}">Next</a></li>
+								<li class="page-item">
+								  <a class="page-link" href="?page={{ page_object.paginator.num_pages }}">last&raquo;</a>
+								</li>
+							{% endif %}
+						</ul>
+					</nav>
+
+				{% else %}
+					No book found.
+				{% endif %}
+			</div>
+		</div>
+	</main>
+</div>
+
+
+{% endblock %}
