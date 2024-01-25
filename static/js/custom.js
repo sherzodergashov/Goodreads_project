@@ -399,16 +399,6 @@ jQuery(document).ready(function($) {
 
         });
 
-
-
-        /*---------------------------------------------------------------------------------------
-        --> Scroll Top (When the user clicks on the button, scroll to the top of the document)
-        -----------------------------------------------------------------------------------------*/
-        $.scrollUp({
-            scrollText: '<i class="ion-chevron-right"></i><i class="ion-chevron-right"></i>',
-            easingType: 'linear',
-            scrollSpeed: 900,
-        });
     })(jQuery);
 
     /*--

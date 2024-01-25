@@ -5,6 +5,7 @@ from django.views.generic import ListView
 
 from books.models import BookReview, Book, Type
 from books.views import BooksView
+from django.core.mail import send_mail
 
 def Hello(request):
     return render(request, 'Hello.html')
@@ -40,6 +41,22 @@ def book_random(request):
         'book_all': book_all,
         'book_type': type_book
     }
+
+    # //////////////////////
+    if request.method == "POST":
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        data = {
+            'email': email,
+            'message': message
+        }
+        message = ''' 
+        New message: {}
+        
+        Form: {}
+        '''.format(data['message'], data['email'])
+        send_mail(data['email'], message, '', ['sherzod.ergashov.4501@gmail.com'])
     return render(request, 'Hello.html', context)
 
 def ProductDetails(request):
