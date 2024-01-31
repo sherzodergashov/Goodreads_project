@@ -58,8 +58,10 @@ class BookReview(models.Model):
         return f"{self.stars_given} stars for {self.book.title} by {self.user.username}"
 
 class Order(models.Model):
+    objects = None
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    count = models.SmallIntegerField(default=0)
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

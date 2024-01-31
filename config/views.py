@@ -58,12 +58,3 @@ def book_random(request):
         '''.format(data['message'], data['email'])
         send_mail(data['email'], message, '', ['sherzod.ergashov.4501@gmail.com'])
     return render(request, 'Hello.html', context)
-
-def ProductDetails(request):
-    return render(request, 'product-details.html')
-
-def ShopGrid(request):
-    return render(request, 'shop-grid.html')
-
-def ShopList(request):
-    return render(request, 'shop-list.html')

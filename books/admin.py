@@ -19,7 +19,8 @@ class BookAutherAdmin(admin.ModelAdmin):
 
 
 class BookReviewAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['id', 'user', 'book', 'stars_given', 'created_at']
+    readonly_fields = ['created_at', ]
 
 class OrderAdmin(admin.ModelAdmin):
     pass

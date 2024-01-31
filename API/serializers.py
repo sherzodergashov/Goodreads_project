@@ -1,13 +1,19 @@
 from rest_framework import serializers
 
-from books.models import Book, BookReview
+from books.models import Book, BookReview, Order, Type
 from users.models import CustomUser
 
+class TypeSerializes(serializers.ModelSerializer):
+    class Meta:
+        model = Type
+        fields = ('id', 'name')
 
 class BookSerializers(serializers.ModelSerializer):
+    type = TypeSerializes()
+    
     class Meta:
         model = Book
-        fields = ('id', 'title', 'description', 'isbn')
+        fields = ('id', 'title', 'description', 'isbn', 'cover_picture', 'price', 'language', 'type')
     # title = serializers.CharField(max_length=200)
     # description = serializers.CharField()
     # isbn = serializers.CharField(max_length=17)
@@ -33,6 +39,13 @@ class BookReviewSerializers(serializers.ModelSerializer):
     # book = BookSerializers()
     # user = UserSerializers()
 
+class OrderSerializers(serializers.ModelSerializer):
+    book = BookSerializers()
+    user = UserSerializers()
+
+    class Meta:
+        model = Order
+        fields = ('id', 'book', 'user')
 
 
 

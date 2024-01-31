@@ -3,13 +3,11 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from books.views import BookViews
 from .views import home_page, book_list, book_random
 
 urlpatterns = [
     path("book_list/", book_list, name='book_list'),
     path("home/", home_page, name='home_pages'),
-    path("rasm/", BookViews, name="books_kitoblar"),
     path("", book_random, name='helloworld'),
     path("users/", include("users.urls")),
     path("books/", include("books.urls")),

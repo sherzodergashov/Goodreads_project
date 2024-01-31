@@ -9,10 +9,10 @@
         <div class="container">
             <div class="row mb-4 border border-dark">
                 <div class="col-3">
-                    <img class="cover-pic" src="{{ book.cover_picture.url }}" alt="default_cover_image">
+                    <img class="cover-pic my-5 mx-5" src="{{ book.cover_picture.url }}" alt="default_cover_image">
                 </div>
 
-                <div class="col-6 ms-3">
+                <div class="col-6 ms-3 my-2">
                     <h3>{{ book.title }}</h3>
 
                     <span class="fst-italic">
@@ -27,45 +27,71 @@
                     </span>
 
                     <p>{{ book.description }}</p>
-                    <div class="add-to-cart-row">
+                    <div class="add-to-cart-row my-3">
                         <div class="add-cart-btn">
-                            <a href="" class="btn btn-outlined--primary">Buy Now</a>
+                            <a href="" class="btn btn-outlined--primary ">Buy Now</a>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="row mb-4 border border-dark">
-                <div class="col-6">
+                <div class="col-6 my-3">
                     <form method="post" action="{% url 'books:reviews' book.id %}">
                         {% csrf_token %}
-                        <!--            yulduz stars-given-->
-                        <!--            <div class="rating-row pt-2">-->
-                        <!--                <p class="d-block">Your Rating</p>-->
-                        <!--                <span class="rating-widget-block">-->
-                        <!--                    <input type="radio" name="star" id="star1">-->
-                        <!--                    <label for="star1"></label>-->
-                        <!--                    <input type="radio" name="star" id="star2">-->
-                        <!--                    <label for="star2"></label>-->
-                        <!--                    <input type="radio" name="star" id="star3">-->
-                        <!--                    <label for="star3"></label>-->
-                        <!--                    <input type="radio" name="star" id="star4">-->
-                        <!--                    <label for="star4"></label>-->
-                        <!--                    <input type="radio" name="star" id="star5">-->
-                        <!--                    <label for="star5"></label>-->
-                        <!--                </span>-->
-                        <!--                <form action="./" class="mt&#45;&#45;15 site-form ">-->
-                        <!--                    <div class="row">-->
-                        <!--                        <div class="col-12">-->
-                        <!--                            <div class="form-group">-->
-                        <!--                                <label for="message">Comment</label>-->
-                        <!--                                <textarea name="message" id="message" cols="30" rows="10"-->
-                        <!--                                    class="form-control"></textarea>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
-                        <!--                    </div>-->
-                        <!--                </form>-->
-                        <!--            </div>-->
+<!--                        &lt;!&ndash;            yulduz stars-given&ndash;&gt;-->
+<!--                            <div class="rating-row pt-2">-->
+<!--                                <p class="d-block">Your Rating</p>-->
+<!--                                <div class="container">-->
+<!--                                    <div class="container__items">-->
+<!--                                        <input type="radio" name="stars" id="st5">-->
+<!--                                        <label for="st5">-->
+<!--                                            <div class="star-stroke">-->
+<!--                                                <div class="star-fill"></div>-->
+<!--                                            </div>-->
+<!--                                            <div class="label-description" data-content="Excellent"></div>-->
+<!--                                        </label>-->
+<!--                                        <input type="radio" name="stars" id="st4">-->
+<!--                                        <label for="st4">-->
+<!--                                            <div class="star-stroke">-->
+<!--                                                <div class="star-fill"></div>-->
+<!--                                            </div>-->
+<!--                                            <div class="label-description" data-content="Good"></div>-->
+<!--                                        </label>-->
+<!--                                        <input type="radio" name="stars" id="st3">-->
+<!--                                        <label for="st3">-->
+<!--                                            <div class="star-stroke">-->
+<!--                                                <div class="star-fill"></div>-->
+<!--                                            </div>-->
+<!--                                            <div class="label-description" data-content="OK"></div>-->
+<!--                                        </label>-->
+<!--                                        <input type="radio" name="stars" id="st2">-->
+<!--                                        <label for="st2">-->
+<!--                                            <div class="star-stroke">-->
+<!--                                                <div class="star-fill"></div>-->
+<!--                                            </div>-->
+<!--                                            <div class="label-description" data-content="Bad"></div>-->
+<!--                                        </label>-->
+<!--                                        <input type="radio" name="stars" id="st1">-->
+<!--                                        <label for="st1">-->
+<!--                                            <div class="star-stroke">-->
+<!--                                                <div class="star-fill"></div>-->
+<!--                                            </div>-->
+
+<!--                                            <div class="label-description" data-content="Terrible"></div>-->
+<!--                                        </label>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="row">-->
+<!--                                    <div class="col-12">-->
+<!--                                        <div class="form-group">-->
+<!--                                            <label for="message">Comment</label>-->
+<!--                                            <textarea name="message" id="message" placeholder="write a review" cols="30" rows="10"-->
+<!--                                                class="form-control"></textarea>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
 
                         {{ review_form | crispy }}
 

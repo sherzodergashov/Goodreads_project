@@ -1,14 +1,13 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 from books.forms import BookReviewForm
-from books.models import Book, BookReview, Type
-
-def BookViews(request):
-    return render(request, 'books.html')
+from books.models import Book, BookReview, Type, Order
+from users.models import CustomUser
 
 def CategorieView(request):
     books = Book.objects.all()
@@ -53,7 +52,15 @@ class BooksView(View):
         page_obj = paginator.get_page(page_num)
         type_book = Type.objects.all()
         book_review = BookReview.objects.all()
-
+        # user = request.session['username']
+        # customuser = CustomUser.objects.get(username=user)
+        #
+        # if request.method == "POST":
+        #     stars_given = request.POST.get('star')
+        #     messages = request.POST.get('message')
+        #
+        #     reviews = BookReview(user=customuser, book=books, stars_given=stars_given, review_message=messages)
+        #     reviews.save()
         return render(
             request,
             "books/list.html",
@@ -70,17 +77,48 @@ class BookDatailView(View):
     @staticmethod
     def get(request, id):
         type_book = Type.objects.all()
-
+        # totalitem = 0
         book = Book.objects.get(id=id)
         review_form = BookReviewForm()
         review_detail = BookReview.objects.filter(id=id)
+        # item_already_in_cart = False
+        # if request.user.is_authenticated:
+        #     totalitem = len(Order.objects.filter(user=request.user))
+        #     item_already_in_cart = Order.objects.filter(Q(book=book.id) & Q(user=request.user)).exists()
 
         return render(request, "books/datail.html", {
             "book": book,
             "review_form": review_form,
             'review_detail': review_detail,
-            'book_type': type_book
+            'book_type': type_book,
+            # 'item_already_in_cart': item_already_in_cart,
+            # 'totalitem': totalitem
         })
+
+    # def post(self, request, id):
+    #     book = Book.objects.get(id=id)
+    #     review_form = BookReviewForm(request.POST)
+    #     if review_form.is_valid():
+    #         new_review = review_form.save(commit=False)
+    #         new_review.book = book
+    #         new_review.user = request.user
+    #         new_review.save()
+    #         return redirect('datail', id=id)
+    #     else:
+    #         totalitem = len(Order.objects.filter(user=request.user))
+    #         item_already_in_cart = Order.objects.filter(
+    #             Q(book=book.id) & Q(user=request.user)
+    #         ).exists()
+    #         reviews = BookReview.objects.filter(book=book)
+    #         return render(request, "books/datail.html", {
+    #             "book": book,
+    #             "review_form": review_form,
+    #             # 'review_detail': review_detail,
+    #             'item_already_in_cart': item_already_in_cart,
+    #             'totalitem': totalitem
+    #         })
+
+
 
 class AddReviewView(LoginRequiredMixin, View):
     def post(self, request, id):

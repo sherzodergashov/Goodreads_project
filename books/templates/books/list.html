@@ -41,17 +41,12 @@
 											<del class="price-old">£51.20</del>
 											<span class="price-discount">20%</span>
 										</div>
-										<div class="rating-block">
-											{% for book_review in b_review %}
-												<div>
-													{{ book_review.stars_given }}
-												</div>
-											{% endfor %}
-											<span class="fas fa-star star_on"></span>
-											<span class="fas fa-star star_on"></span>
-											<span class="fas fa-star star_on"></span>
-											<span class="fas fa-star star_on"></span>
-											<span class="fas fa-star "></span>
+										<div class="rating">
+											<input type="radio" name="star" value="1" id="star1"><label for="star1" aria-hidden="true"></label>
+											<input type="radio" name="star" value="2" id="star2"><label for="star2" aria-hidden="true"></label>
+											<input type="radio" name="star" value="3" id="star3"><label for="star3" aria-hidden="true"></label>
+											<input type="radio" name="star" value="4" id="star4"><label for="star4" aria-hidden="true"></label>
+											<input type="radio" name="star" value="5" id="star5"><label for="star5" aria-hidden="true"></label>
 										</div>
 										<div class="btn-block">
 											<a href="{% url 'books:datail' book.id %}" class="btn btn-outlined">Add To Cart</a>
