@@ -1,5 +1,4 @@
 from rest_framework import serializers
-
 from books.models import Book, BookReview, Order, Type
 from users.models import CustomUser
 
@@ -45,7 +44,7 @@ class OrderSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ('id', 'book', 'user')
+        fields = ('id', 'book', 'user', 'count', 'date')
 
 
 

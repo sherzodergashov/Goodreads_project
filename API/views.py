@@ -44,5 +44,8 @@ class OrderViewAPI(APIView):
     def get(self, request):
         orders_book = Order.objects.all().order_by('id')
 
-        serializer = OrderSerializers(orders_book, many=True)
-        return Response(data=serializer.data)
+        paginator = PageNumberPagination()
+        page_obj = paginator.paginate_queryset(orders_book, request)
+
+        serializer = OrderSerializers(page_obj, many=True)
+        return paginator.get_paginated_response(serializer.data)

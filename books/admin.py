@@ -12,6 +12,7 @@ class BookAdmin(admin.ModelAdmin):
 
 class AutherAdmin(admin.ModelAdmin):
     search_fields = ('last_name', 'first_name')
+    list_display = ('last_name', 'first_name', 'email', 'bio')
 
 
 class BookAutherAdmin(admin.ModelAdmin):
@@ -23,7 +24,7 @@ class BookReviewAdmin(admin.ModelAdmin):
     readonly_fields = ['created_at', ]
 
 class OrderAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('user', 'book', 'count', 'date')
 
 class TypeAdmin(admin.ModelAdmin):
     list_filter = ['name']

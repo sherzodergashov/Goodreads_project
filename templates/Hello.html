@@ -522,7 +522,6 @@
                         {% if book_list %}
                         {% for model in book_list %}
                         {% for m in book_all %}
-                        {% if model.id == book_all.id and model.title == book_all.title %}
 
                         <div class="col-lg-5">
                             <!-- Product Details Slider Big Image-->
@@ -592,7 +591,6 @@
                                 </div>
                             </div>
                         </div>
-                        {% endif %}
                         {% endfor %}
                         {% endfor %}
                         {% else %}

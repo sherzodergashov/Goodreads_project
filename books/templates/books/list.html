@@ -4,6 +4,44 @@
 
 {% block content %}
 {% load static %}
+<style>
+
+.star-reting{
+	direction: rtl;
+	width: 300px;
+	height: 80px;
+}
+.star-reting input{
+	display: none;
+	position: reletive;
+}
+.star-reting label{
+	position: reletive;
+	width: 40px;
+	height: 10px;
+	cursor: pointer;
+}
+.star-reting label:before {
+  content: "\2605";
+  color: orange;
+  font-size: 50px;
+  position: absolute;
+  opacity: 0;
+}
+.star-reting label:after {
+  content: "\2605";
+  color: #ccc;
+  font-size: 50px;
+}
+.star-reting label:hover:before,
+.star-reting label:hover ~ label:before{
+	opacity: 1;
+}
+.star-reting input:checked ~ label:before,
+.star-reting input:checked ~ label:after{
+	color: orange;
+}
+</style>
 <div class="site-wrapper" id="top">
 	<main class="inner-page-sec-padding-bottom">
 		<div class="container">
@@ -41,12 +79,17 @@
 											<del class="price-old">£51.20</del>
 											<span class="price-discount">20%</span>
 										</div>
-										<div class="rating">
-											<input type="radio" name="star" value="1" id="star1"><label for="star1" aria-hidden="true"></label>
-											<input type="radio" name="star" value="2" id="star2"><label for="star2" aria-hidden="true"></label>
-											<input type="radio" name="star" value="3" id="star3"><label for="star3" aria-hidden="true"></label>
-											<input type="radio" name="star" value="4" id="star4"><label for="star4" aria-hidden="true"></label>
-											<input type="radio" name="star" value="5" id="star5"><label for="star5" aria-hidden="true"></label>
+										<div class="star-reting">
+											<input type="radio" name="reting" id="star1">
+											<label for="star1"></label>
+											<input type="radio" name="reting" id="star2">
+											<label for="star2"></label>
+											<input type="radio" name="reting" id="star3">
+											<label for="star3"></label>
+											<input type="radio" name="reting" id="star4">
+											<label for="star4"></label>
+											<input type="radio" name="reting" id="star5">
+											<label for="star5"></label>
 										</div>
 										<div class="btn-block">
 											<a href="{% url 'books:datail' book.id %}" class="btn btn-outlined">Add To Cart</a>

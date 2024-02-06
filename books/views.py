@@ -9,8 +9,30 @@ from books.forms import BookReviewForm
 from books.models import Book, BookReview, Type, Order
 from users.models import CustomUser
 
+class CategoriesIDView(View):
+    def get(self, request, id):
+        type_book = Type.objects.all()
+        book = Book.objects.all().filter(type_id=id)
+        review_form = BookReviewForm()
+        review_detail = BookReview.objects.filter(id=id)
+
+        page_size = request.GET.get("page_size", 6)
+        paginator = Paginator(book, page_size)
+
+        page_num = request.GET.get('page', 1)
+        page_obj = paginator.get_page(page_num)
+
+        return render(request, "books/categories/type.html", {
+            "page_object": page_obj,
+            "book": book,
+            "review_form": review_form,
+            'review_detail': review_detail,
+            'book_type': type_book,
+        })
+
 def CategorieView(request):
-    books = Book.objects.all()
+    books = Book.objects.all().filter(type_id = 3)
+    type_book = Type.objects.all()
 
     page_size = request.GET.get("page_size", 6)
     paginator = Paginator(books, page_size)
@@ -19,7 +41,8 @@ def CategorieView(request):
     page_obj = paginator.get_page(page_num)
 
     context = {
-        "page_object": page_obj
+        "page_object": page_obj,
+        'book_type': type_book,
     }
 
     return render(request, 'books/categories/categorie.html', context)
